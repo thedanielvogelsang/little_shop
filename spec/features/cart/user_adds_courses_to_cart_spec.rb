@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "user visits index page" do
   before(:each) do
-
+    category = create(:category)
+    course = create(:course, category_id: category.id)
   end
 
   context "and adds course to cart" do
