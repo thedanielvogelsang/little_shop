@@ -44,6 +44,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end
 
