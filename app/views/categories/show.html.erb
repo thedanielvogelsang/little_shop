@@ -1,0 +1,5 @@
+<h2><%= @category.title %></h2>
+
+<% @category.courses.each do |course| %>
+  <%= course.title %>
+  <% end %>
