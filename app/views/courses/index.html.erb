@@ -3,4 +3,5 @@
 <% @courses.each do |course| %>
 <div><h2><%= course.title %></h2>
     <p><%= course.description %></p></div>
+    <%= button_to "Add to Cart", carts_path(course_id: course.id), class: "btn btn-default" %>
 <% end %>
