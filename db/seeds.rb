@@ -38,7 +38,7 @@ class Seed
   end
 
   def generate_courses
-    offsetable_amount = Category.count - 1
+    #offsetable_amount = Category.count - 1
     50.times do |i|
       course = Course.create!(
         title: Faker::Company.profession,
@@ -46,7 +46,7 @@ class Seed
         image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         #alternatively image_url: Faker::Internet.url
         price: Faker::Number.decimal(2),
-        category_id:
+        category_id: rand(100)
         )
       puts "Course #{i}: #{course.title} created and has!"
     end
