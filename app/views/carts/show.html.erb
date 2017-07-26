@@ -1,0 +1,9 @@
+<h1>Your Cart</h1>
+<% @courses.each do |course|  %>
+  <%= course.title %>
+  <%= course.description %>
+  <%= course.price %>
+  <%= course.image %>
+<% end %>
+
+  <%= @cart.total_price %>
