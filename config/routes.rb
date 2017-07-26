@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :courses, only: [:index]
+  root to: 'courses#index'
 end
