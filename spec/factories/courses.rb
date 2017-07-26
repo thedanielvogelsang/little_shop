@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :course do
-    title "MyString"
-    description "MyString"
-    price ""
+    title "MyCourse"
+    description "Course Details"
+    price "444.67"
     image "MyString"
     category nil
   end
