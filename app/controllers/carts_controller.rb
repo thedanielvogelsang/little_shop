@@ -1,31 +1,32 @@
 class CartsController < ApplicationController
+  include ActionView::Helpers::TextHelper
+  before_action :set_cart
+
+  def set_cart
+    @cart ||= Cart.new(session[:cart])
+  end
 
   def create
-    id = params[:course_id].to_s
-    @course = Course.find(id.to_i)
-    session[:cart] ||= {}
-    session[:cart][id] = (session[:cart][id] || 0) + 1
-    flash[:success] = "#{@course.title} added to cart"
-
-<<<<<<< HEAD
-    redirect_to root_path
-=======
+    course = Course.find(params[:course_id])
     @cart.add_course(course.id)
     session[:cart] = @cart.content
 
     flash[:success] = "#{course.title} added to cart"
     # this redirect keeps user on course show page instead of home page after readding course
     redirect_back(fallback_location: root_path)
->>>>>>> 0cb900d0a67bf80a13812539d46bab1963384770
-  end
+end
 
   def show
-    @cart = Cart.new(session[:cart])
     @courses = @cart.find_by_course_id
   end
 
-<<<<<<< HEAD
-=======
+  def add
+    course = Course.find(params[:course_id])
+    @cart.add_course(course.id)
+
+    redirect_to cart_path
+  end
+
   def destroy
     id = params[:course_id].to_s
     @course = Course.find(id.to_i)
@@ -34,6 +35,4 @@ class CartsController < ApplicationController
 
     redirect_to cart_path
   end
-
->>>>>>> 0cb900d0a67bf80a13812539d46bab1963384770
 end
