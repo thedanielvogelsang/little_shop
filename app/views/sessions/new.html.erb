@@ -1,0 +1,12 @@
+<body>
+  <div>
+      <div class="container">
+        <h1>Login to Your Account</h1><br>
+        <%= form_tag "/sessions" do %>
+          Username: <input id="user" type="text" name="session[username]" placeholder="Username">
+          Password: <input id="password" type="password" name="session[password]" placeholder="Password">
+          <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+        <% end %>
+      </div>
+  </div>
+</body>
