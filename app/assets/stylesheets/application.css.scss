@@ -16,3 +16,65 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.hero-feature{
+  height: 550px;
+}
+
+form.button-to{
+  float: left;
+  margin-left: 0px;
+  margin-right: 5px;
+  padding: 0;
+}
+
+a.btn{
+  float: left;
+  margin-right: 0px;
+  margin-left: 20px;
+}
+.cart-page{
+  text-align: center;
+  align-items: center;
+}
+
+
+.cart-page{
+  background-image: image-url("tetrahedronfield.jpg");
+  // background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+header.jumbotron{
+  background: rgb(33, 37, 43);
+  color: white;
+}
+
+nav.navbar-invers{
+  background: rgb(33, 37, 43);
+}
+
+.thumbnail{
+  background: rgb(149,149,149);
+  border: 2px solid rgb(33, 37, 43);
+  padding: 20px 8px 10px 8px;
+  margin-top: 30px;
+}
+
+img.course-image{
+  border: 4px solid rgb(33, 37, 43);
+  border-radius: 8px;
+}
+
+.courses-header h1{
+  font-weight: normal;
+  font-size: 2.6em;
+  text-decoration: underline;
+  line-height: 2em;
+  color: rgb(119,119,119);
+  background: rgb(33,37,43);
+}
+
+.container-main{
+  border: 2px solid black;
+}
