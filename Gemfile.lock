@@ -242,10 +242,7 @@ DEPENDENCIES
   launchy
   listen (>= 3.0.5, < 3.2)
   pg
-<<<<<<< HEAD
-=======
   pry
->>>>>>> 7c5b30b024d07c21d1771776b4ded10679807922
   puma (~> 3.7)
   rails (~> 5.1.2)
   rails-controller-testing
