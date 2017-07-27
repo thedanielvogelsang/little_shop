@@ -3,7 +3,7 @@ FactoryGirl.define do
     title "MyCourse"
     description "Course Details"
     price 50.00
-    image "MyString"
+    image "https://robohash.org/0.png"
     category
   end
 end
