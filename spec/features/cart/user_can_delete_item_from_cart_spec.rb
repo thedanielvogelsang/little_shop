@@ -19,7 +19,6 @@ RSpec.feature "user visits cart" do
     expect(page).to_not have_content("#{@course1.description}")
 
     click_link "#{@course1.title}"
-
-    expect(current_path).to eq("/categories/#{@course1.category.id}/courses/#{@course1.id}")
+    expect(current_path).to eq("/categories/mycategory/courses/#{@course1.id}")
   end
 end
