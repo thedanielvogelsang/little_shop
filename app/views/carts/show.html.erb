@@ -1,12 +1,25 @@
+<body class="cart-page">
+
 <h1>Your Cart</h1>
-<div>
-<% @courses.each do |course|  %>
-  <p><%= course.title %></p>
-  <p><%= course.description %></p>
-  <p><%= course.price %></p>
-  <%= image_tag course.image %></p>
-  <%= button_to "Remove", cart_path(course_id: course.id), method: "delete", id: "#{course.id}" %>
-  <hr/>
-<% end %>
+  <div class="total-price">
+    <h3>$ <%= @cart.total_price %></h3>
+  </div>
+<div class="">
+    <div class="row text-center">
+      <% @courses.each do |course| %>
+        <div class="col-md-3 col-sm-6 center-items">
+          <div class="thumbnail">
+            <img src="  <%= image_tag course.image %></p>
+" class="course-image">
+              <div class="caption">
+              <h3><%= course.title %></h3>
+              <p><%= course.description %></p>
+              <p><%= course.price %></p>
+              <%= button_to "Remove", cart_path(course_id: course.id), method: "delete", id: "#{course.id}" %>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </div>
-<%= @cart.total_price %>
+</body>
