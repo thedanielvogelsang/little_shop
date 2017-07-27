@@ -27,14 +27,14 @@ describe "User sees all items for a single category" do
 
     visit category_path(category_1)
 
-    expect(current_path).to eq("/categories/#{category_1.id}")
+    expect(current_path).to eq("/categories/ruby-on-rails")
     expect(page).to have_content("Ruby on Rails")
     expect(page).to have_content("Dissecting Ruby on Rails 5")
     expect(page).to have_content("Professional Rails Code Along")
 
     visit category_path(category_2)
 
-    expect(current_path).to eq("/categories/#{category_2.id}")
+    expect(current_path).to eq("/categories/angular")
     expect(page).to have_content("Angular")
     expect(page).to have_content("Learn and Understand AngularJS")
     expect(page).to have_content("Angular 4: Master Class for Beginners")
