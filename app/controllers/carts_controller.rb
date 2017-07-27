@@ -10,7 +10,6 @@ class CartsController < ApplicationController
     course = Course.find(params[:course_id])
     @cart.add_course(course.id)
     session[:cart] = @cart.content
-
     flash[:success] = "#{course.title} added to cart"
     # this redirect keeps user on course show page instead of home page after readding course
     redirect_back(fallback_location: root_path)
