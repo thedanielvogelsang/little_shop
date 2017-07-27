@@ -9,8 +9,7 @@
       <% @courses.each do |course| %>
         <div class="col-md-3 col-sm-6 center-items">
           <div class="thumbnail">
-            <img src="  <%= image_tag course.image %></p>
-" class="course-image">
+            <img src="<%= course.image %>" class="course-image">
               <div class="caption">
               <h3><%= course.title %></h3>
               <p><%= course.description %></p>
