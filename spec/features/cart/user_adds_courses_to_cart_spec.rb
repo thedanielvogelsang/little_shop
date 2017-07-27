@@ -7,7 +7,7 @@ RSpec.feature "user visits index page" do
   end
 
   context "and adds course to cart" do
-    scenario "and sees 'course added to cart!'" do
+    scenario "and sees course added to cart!'" do
 
       visit root_path
       expect(page).to have_content("MyCourse")
@@ -21,8 +21,7 @@ RSpec.feature "user visits index page" do
       expect(page).to have_content(@course.title)
       expect(page).to have_content(@course.description)
       expect(page).to have_content(@course.price)
-      expect(page).to have_content(@course.image)
-
+      expect(page).to have_xpath("//img[contains(@src,'#{@course.image}')]")
       expect(page).to have_content(50)
 
     end
