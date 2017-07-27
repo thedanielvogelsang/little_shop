@@ -13,7 +13,8 @@ class CartsController < ApplicationController
     session[:cart] = @cart.content
 
     flash[:success] = "#{course.title} added to cart"
-    redirect_to root_path
+    # this redirect keeps user on course show page instead of home page after readding course
+    redirect_back(fallback_location: root_path)
   end
 
   def show
@@ -24,7 +25,8 @@ class CartsController < ApplicationController
     id = params[:course_id].to_s
     @course = Course.find(id.to_i)
     session[:cart].delete(id)
-    flash[:success] = "Successfully removed #{@course.title} from your cart."
+    flash[:success] = "Successfully removed #{view_context.link_to @course.title, category_course_path(category_id: @course.category, id: @course.id)} from your cart."
+
     redirect_to cart_path
   end
 
