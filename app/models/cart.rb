@@ -1,7 +1,7 @@
 class Cart
-  attr_reader :content
-  def initialize(initial_content)
-    @content = initial_content || {}
+
+  def initialize(content)
+    @content = content
   end
 
   def total_price
@@ -9,10 +9,8 @@ class Cart
   end
 
   def find_by_course_id
-    content.keys.map { |course| Course.find(course.to_i) }
+    @content.keys.map { |course| Course.find(course.to_i) }
   end
 
-  def add_course(id)
-    content[id.to_s] = (content[id.to_s] || 0) + 1
-  end
+
 end
