@@ -27,11 +27,11 @@ RSpec.feature "authenticated user visits homepage" do
       fill_in "session[password]", with: "password"
       click_button "Login"
       expect(current_path).to eq('/dashboard')
-      expect(current_page).to have_content(@user.username)
-      expect(current_page).to have_content(@user.first_name)
-      expect(current_page).to have_content(@user.last_name)
-      expect(current_page).to have_content(@user.email)
-      expect(current_page).to have_content("Logged in as SOME_USER")
+      expect(page).to have_content(@user.username)
+      expect(page).to have_content(@user.first_name)
+      expect(page).to have_content(@user.last_name)
+      expect(page).to have_content(@user.email)
+      expect(page).to have_content("Logged in as #{@user.username}")
     end
   end
 end
