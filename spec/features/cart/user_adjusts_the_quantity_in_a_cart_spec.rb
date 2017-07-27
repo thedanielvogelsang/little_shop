@@ -18,12 +18,14 @@ RSpec.feature "user visits their cart" do
       expect(current_path).to eq("/cart")
       expect(page).to have_content("Quantity: 1")
 
+
       click_button "Increase Quantity"
       expect(current_path).to eq("/cart")
       expect(page).to have_content("Quantity: 2")
 
+
       expect(page).to have_content("Subtotal: 100.00")
-      expect(page).to have_content("Total Price: 100.00")
+      expect(page).to have_content("Cart Total: 100.0")
     end
   end
 end

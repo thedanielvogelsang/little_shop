@@ -21,6 +21,13 @@ class CartsController < ApplicationController
     @courses = @cart.find_by_course_id
   end
 
+  def add
+    course = Course.find(params[:course_id])
+    @cart.add_course(course.id)
+
+    redirect_to cart_path
+  end
+
   def destroy
     id = params[:course_id].to_s
     @course = Course.find(id.to_i)
