@@ -15,4 +15,8 @@ class Cart
   def add_course(id)
     content[id.to_s] = (content[id.to_s] || 0) + 1
   end
+
+  def subtract_course(id)
+    content[id.to_s] = content[id.to_s] - 1
+  end
 end

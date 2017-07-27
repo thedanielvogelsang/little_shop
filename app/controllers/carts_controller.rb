@@ -21,10 +21,14 @@ class CartsController < ApplicationController
     @courses = @cart.find_by_course_id
   end
 
-  def add
-    course = Course.find(params[:course_id])
-    @cart.add_course(course.id)
-
+  def update
+    if params[:increase]
+      course = Course.find(params[:course_id])
+      @cart.add_course(course.id)
+    elsif params[:decrease]
+      course = Course.find(params[:course_id])
+      @cart.subtract_course(course.id)
+    end
     redirect_to cart_path
   end
 
