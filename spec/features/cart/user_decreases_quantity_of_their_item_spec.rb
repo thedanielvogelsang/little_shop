@@ -15,14 +15,12 @@ RSpec.feature "user visits their cart" do
       click_link "Cart"
 
       expect(current_path).to eq("/cart")
-      save_and_open_page
       expect(page).to have_content("Quantity: 1")
       expect(page).to have_content("Subtotal: 50.00")
       click_button "Decrease Quantity"
       expect(current_path).to eq("/cart")
       expect(page).to_not have_content("Quantity: 1")
       expect(page).to_not have_content("Subtotal: 50.00")
-      save_and_open_page
 
     end
   end
