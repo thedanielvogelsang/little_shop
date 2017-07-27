@@ -1,8 +1,9 @@
 <body class="cart-page">
 
 <h1>Your Cart</h1>
+
   <div class="total-price">
-    <h3>$ <%= @cart.total_price %></h3>
+    <h3>$ Cart Total: <%= @cart.total_price %></h3>
   </div>
 <div class="">
     <div class="row text-center">
@@ -14,7 +15,11 @@
               <h3><%= course.title %></h3>
               <p><%= course.description %></p>
               <p><%= course.price %></p>
+              Quantity: <%=  @cart.content[course.id.to_s] %>
+              <%= button_to "Increase Quantity", add_path(course_id: course.id), method: :post %>
               <%= button_to "Remove", cart_path(course_id: course.id), method: "delete", id: "#{course.id}" %>
+              Subtotal: <%= number_with_precision((@cart.content[course.id.to_s] * course.price),  precision: 2)  %>
+               <hr/>
               </div>
           </div>
         </div>
