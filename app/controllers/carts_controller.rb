@@ -19,4 +19,13 @@ class CartsController < ApplicationController
   def show
     @courses = @cart.find_by_course_id
   end
+
+  def destroy
+    id = params[:course_id].to_s
+    @course = Course.find(id.to_i)
+    session[:cart].delete(id)
+    flash[:success] = "Successfully removed #{@course.title} from your cart."
+    redirect_to cart_path
+  end
+
 end

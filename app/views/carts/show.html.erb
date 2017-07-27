@@ -1,9 +1,12 @@
 <h1>Your Cart</h1>
+<div>
 <% @courses.each do |course|  %>
-  <%= course.title %>
-  <%= course.description %>
-  <%= course.price %>
-  <%= course.image %>
+  <p><%= course.title %></p>
+  <p><%= course.description %></p>
+  <p><%= course.price %></p>
+  <%= image_tag course.image %></p>
+  <%= button_to "Remove", cart_path(course_id: course.id), method: "delete" %>
+  <hr/>
 <% end %>
-
-  <%= @cart.total_price %>
+</div>
+<%= @cart.total_price %>

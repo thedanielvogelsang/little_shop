@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   post '/carts', to: "carts#create"
   get '/cart', to: "carts#show"
+  delete '/cart', to: "carts#destroy"
 end
