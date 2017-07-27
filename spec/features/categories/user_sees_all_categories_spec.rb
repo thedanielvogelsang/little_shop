@@ -25,16 +25,17 @@ describe "User sees all items for a single category" do
                               price: 59.99, image: "http://lorempixel.com/300/300",
                               category_id: category_2.id)
 
-    visit category_path(category_1)
+    visit "/#{category_1.slug}"
 
-    expect(current_path).to eq("/categories/ruby-on-rails")
+
+    expect(current_path).to eq("/ruby-on-rails")
     expect(page).to have_content("Ruby on Rails")
     expect(page).to have_content("Dissecting Ruby on Rails 5")
     expect(page).to have_content("Professional Rails Code Along")
 
-    visit category_path(category_2)
+    visit "/#{category_2.slug}"
 
-    expect(current_path).to eq("/categories/angular")
+    expect(current_path).to eq("/angular")
     expect(page).to have_content("Angular")
     expect(page).to have_content("Learn and Understand AngularJS")
     expect(page).to have_content("Angular 4: Master Class for Beginners")
