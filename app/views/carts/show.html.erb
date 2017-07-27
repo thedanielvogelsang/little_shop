@@ -10,14 +10,14 @@
       <% @courses.each do |course| %>
         <div class="col-md-3 col-sm-6 center-items">
           <div class="thumbnail">
-            <img src="  <%= image_tag course.image %></p>
-" class="course-image">
+            <img src=" <%= image_tag course.image %>" class="course-image">
               <div class="caption">
               <h3><%= course.title %></h3>
               <p><%= course.description %></p>
               <p><%= course.price %></p>
               Quantity: <%=  @cart.content[course.id.to_s] %>
-              <%= button_to "Increase Quantity", add_path(course_id: course.id), method: :post %>
+              <%= button_to "Increase Quantity", cart_path(course_id: course.id, increase: "increase"), method: :post %>
+              <%= button_to "Decrease Quantity", cart_path(course_id: course.id, decrease: "decrease"), method: :post %>
               <%= button_to "Remove", cart_path(course_id: course.id), method: "delete", id: "#{course.id}" %>
               Subtotal: <%= number_with_precision((@cart.content[course.id.to_s] * course.price),  precision: 2)  %>
                <hr/>
@@ -28,4 +28,3 @@
     </div>
 </div>
 </body>
-

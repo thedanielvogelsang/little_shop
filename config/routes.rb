@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post '/carts', to: "carts#create"
   get '/cart', to: "carts#show"
   delete '/cart', to: "carts#destroy"
-  post '/add', to: 'carts#add'
+  post '/cart', to: 'carts#update'
 end
