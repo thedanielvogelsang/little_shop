@@ -21,9 +21,7 @@ RSpec.feature "user visits index page" do
       expect(page).to have_content(@course.title)
       expect(page).to have_content(@course.description)
       expect(page).to have_content(@course.price)
-      #expect(page).to have_xpath("//img[contains(@src,#{@course.image})]")
-      #expect(page).to have_selector("//img", :src =>"#{@course.image}")
-
+      expect(page).to have_xpath("//img[contains(@src,'#{@course.image}')]")
       expect(page).to have_content(50)
 
     end

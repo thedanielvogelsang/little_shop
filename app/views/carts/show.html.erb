@@ -5,7 +5,7 @@
   <p><%= course.description %></p>
   <p><%= course.price %></p>
   <%= image_tag course.image %></p>
-  <%= button_to "Remove", cart_path(course_id: course.id), method: "delete" %>
+  <%= button_to "Remove", cart_path(course_id: course.id), method: "delete", id: "#{course.id}" %>
   <hr/>
 <% end %>
 </div>
