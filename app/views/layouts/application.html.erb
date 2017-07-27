@@ -43,9 +43,9 @@
     <div class="container">
       <% flash.each do |name, msg| %>
         <% if name == 'error' %>
-          <%= content_tag :div, msg, :class => "alert alert-danger", :role => "alert" %>
+          <%= content_tag :div, msg.html_safe, :class => "alert alert-danger", :role => "alert" %>
         <% else %>
-          <%= content_tag :div, msg, :class => "alert alert-success", :role=> "alert" %>
+          <%= content_tag :div, msg.html_safe, :class => "alert alert-success", :role=> "alert" %>
         <% end %>
       <% end %>
 

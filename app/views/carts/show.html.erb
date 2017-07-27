@@ -1,6 +1,7 @@
 <body class="cart-page">
 
 <h1>Your Cart</h1>
+<<<<<<< HEAD
 
   <div class="total-price">
     <h3>$ <%= @cart.total_price %></h3>
@@ -22,3 +23,16 @@
     </div>
 </div>
 </body>
+=======
+<div>
+<% @courses.each do |course|  %>
+  <p><%= course.title %></p>
+  <p><%= course.description %></p>
+  <p><%= course.price %></p>
+  <%= image_tag course.image %></p>
+  <%= button_to "Remove", cart_path(course_id: course.id), method: "delete", id: "#{course.id}" %>
+  <hr/>
+<% end %>
+</div>
+<%= @cart.total_price %>
+>>>>>>> 0cb900d0a67bf80a13812539d46bab1963384770
