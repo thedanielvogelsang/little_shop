@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
-
-  root 'courses#index'
-  get "/courses", to: "courses#index"
-
+  root to: 'courses#index'
+  resources :categories, only: [:show]
+  resources :courses, only: [:index, :show]
   resources :users, only: [:new, :create]
-
-  resources :categories, only: [:index] do
-    resources :courses, only: [:index, :show]
-  end
-
-  resources :sessions, only: [:create]
+  resources :sessions, only: [:new, :create]
 
   post '/carts', to: "carts#create"
   get '/cart', to: "carts#show"
