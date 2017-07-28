@@ -33,12 +33,18 @@ a.btn{
   margin-right: 0px;
   margin-left: 20px;
 }
-.cart-page{
+.cart-page {
   text-align: center;
   align-items: center;
 }
 
-
+.category-show-page {
+  text-align: center;
+  align-items: center;
+  background-image: image-url("tetrahedronfield.jpg");
+  // background-repeat: no-repeat;
+  background-attachment: scroll;
+}
 .cart-page{
   background-image: image-url("tetrahedronfield.jpg");
   // background-repeat: no-repeat;

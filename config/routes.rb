@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   root to: 'courses#index'
-  resources :categories, only: [:index, :show] do
-    resources :courses, only: [:index, :show]
-  end
+  resources :categories, only: [:show]
+  resources :courses, only: [:index, :show]
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create]
 
   post '/carts', to: "carts#create"
   get '/cart', to: "carts#show"
   delete '/cart', to: "carts#destroy"
-  post '/add', to: 'carts#add'
+  post '/cart', to: 'carts#update'
+  get '/dashboard', to: 'users#show'
+  get '/login', to: 'sessions#new'
+  get ':category_id', to: 'categories#show'
 end
