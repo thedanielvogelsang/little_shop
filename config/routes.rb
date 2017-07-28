@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'courses#index'
+  resources :categories, only: [:index, :show]
+  resources :courses, only: [:index, :show]
 
-  root 'courses#index'
-  get "/courses", to: "courses#index"
-
-  resources :categories, only: [:index] do
-    resources :courses, only: [:index, :show]
-  end
 
   post '/carts', to: "carts#create"
   get '/cart', to: "carts#show"
