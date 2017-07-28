@@ -30,13 +30,12 @@ RSpec.feature "User creates new account from homepage" do
         fill_in "user[first_name]", with: user_attributes[:first_name]
         fill_in "user[last_name]", with: user_attributes[:last_name]
         fill_in "user[email]", with: user_attributes[:email]
-        click_on "Create Account"
+        click_button "Create Account"
 
         expect(User.last.first_name).to eq("Donna")
         expect(current_path).to eq('/dashboard')
-        expect(page).to have_content("Logged in as #{user.username}")
-        expect(page).to have_content("Successful login")
-        expect(page).to not_have_content("Login")
+        expect(page).to have_content("Logged in as #{user_attributes[:username]}")
+        expect(page).to_not have_content("Login")
         expect(page).to have_content("Logout")
       end
     end

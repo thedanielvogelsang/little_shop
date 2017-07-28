@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'courses#index'
   get "/courses", to: "courses#index"
 
+  resources :users, only: [:new, :create]
+
   resources :categories, only: [:index] do
     resources :courses, only: [:index, :show]
   end
