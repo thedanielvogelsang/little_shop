@@ -3,27 +3,27 @@ require 'rails_helper'
 RSpec.feature "User creates new account from homepage" do
   describe "with valid attributes" do
 
-    describe "when they click on login tab" do
-      it "can see link for create account" do
+    describe "and when they click on login tab" do
+      it "they can see link for create account" do
 
         visit("/")
         click_link("Login")
         expect(current_path).to eq("/login")
         expect(page).to have_content("Create Account")
+        click_link("Create Account")
+        expect(current_path).to eq ("/users/new")
       end
     end
 
-    describe "when they click on create account tab" do
-      it "can click on create account" do
+    describe "and when they click on create account tab" do
+      it "they can click create account" do
 
         user_attributes = {username: "Username", password: "password",
                         first_name: "Donna", last_name: "Clark", email: "donna@gmail.com"}
 
-        click_link("Create Account")
         visit 'users/new'
 
         expect(page).to have_css("//form")
-        expect(current_path).to eq ("/users/new")
 
         fill_in "user[username]", with: user_attributes[:username]
         fill_in "user[password]", with: user_attributes[:password]
