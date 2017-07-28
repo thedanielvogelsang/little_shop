@@ -1,5 +1,7 @@
 # little_shop
 
+heroku-app link: https://radiant-scrubland-30391.herokuapp.com/cart
+
 Loosely tossing around the idea of creating an app that sells and manages Course packages (education), based on the concept of Coursera.
 
 Categories: Courses (one-to-many; belongs-to?)

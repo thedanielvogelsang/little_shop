@@ -16,7 +16,8 @@
               <p><%= course.description %></p>
               <p><%= course.price %></p>
               Quantity: <%=  @cart.content[course.id.to_s] %>
-              <%= button_to "Increase Quantity", add_path(course_id: course.id), method: :post %>
+              <%= button_to "Increase Quantity", cart_path(course_id: course.id, increase: "increase"), method: :post %>
+              <%= button_to "Decrease Quantity", cart_path(course_id: course.id, decrease: "decrease"), method: :post %>
               <%= button_to "Remove", cart_path(course_id: course.id), method: "delete", id: "#{course.id}" %>
               Subtotal: <%= number_with_precision((@cart.content[course.id.to_s] * course.price),  precision: 2)  %>
                <hr/>
