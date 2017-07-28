@@ -19,7 +19,8 @@ RSpec.feature "authenticated user logs in" do
       expect(page).to_not have_content("Login")
       expect(page).to have_content("Logout")
     end
-
+    
+  context "and after logging in successfully" do
     it "can logout" do
       visit('/')
       click_on "Logout"
