@@ -19,5 +19,14 @@ RSpec.feature "authenticated user logs in" do
       expect(page).to_not have_content("Login")
       expect(page).to have_content("Logout")
     end
+
+    it "can logout" do
+      visit('/')
+      click_on "Logout"
+
+      expect(current_path).to eq(root_path)
+      expect(page).to_not have_content("#{user.username.capitalize}")
+      expect(page).to have_content("Goodbye")
+    end
   end
 end
