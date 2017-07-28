@@ -1,5 +1,6 @@
 <h2><%= @category.title %></h2>
 
 <% @category.courses.each do |course| %>
-  <%= course.title %>
+    <p><%= course.title %></p>
+    <p><%= course.description %></p>
   <% end %>
