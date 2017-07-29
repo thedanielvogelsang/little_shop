@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.where(retired: nil)
+    @courses = Course.active
   end
 
   def show
