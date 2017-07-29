@@ -10,7 +10,7 @@ RSpec.feature "user goes to course show" do
     expect(page).to have_content(course.title)
     expect(page).to have_content(course.description)
     expect(page).to have_content(course.price)
-    expect(page).to have_content(course.image)
+    expect(page).to have_xpath("//img[contains(@src,'#{course.image}')]")
     expect(page).to have_button("Add to Cart")
   end
 
@@ -22,7 +22,7 @@ RSpec.feature "user goes to course show" do
     expect(page).to have_content(course.title)
     expect(page).to have_content(course.description)
     expect(page).to have_content(course.price)
-    expect(page).to have_content(course.image)
+    expect(page).to have_xpath("//img[contains(@src,'#{course.image}')]")
     expect(page).to_not have_button("Add to Cart")
     expect(page).to have_button("Course Retired")
   end
