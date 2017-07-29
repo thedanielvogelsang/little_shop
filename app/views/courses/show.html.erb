@@ -8,5 +8,5 @@
 <% unless @course.retired %>
   <%= button_to "Add to Cart", carts_path(course_id: @course.id), class: "btn btn-default" %>
 <% else %>
-  <%= button_to "Course Retired", class: "btn btn-default disabled" %>
+  <%= button_tag "Course Retired", class: "btn btn-default disabled" %>
 <% end %>
