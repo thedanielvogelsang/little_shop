@@ -1,3 +1,5 @@
+require 'date'
+
 User.destroy_all
 Course.destroy_all
 Category.destroy_all
@@ -10,7 +12,8 @@ class Seed
   def run
     generate_users
     generate_categories
-    generate_courses
+    generate_active_courses
+    generate_retired_courses
   end
 
   def generate_users
@@ -36,7 +39,7 @@ class Seed
     end
   end
 
-  def generate_courses
+  def generate_active_courses
     50.times do |i|
       course = Course.create!(
         title: Faker::Company.profession,
@@ -45,7 +48,21 @@ class Seed
         price: Faker::Number.decimal(2),
         category_id: rand(1..10)
         )
-      puts "Course #{i}: #{course.title} created and has!"
+      puts "Course #{i}: #{course.title} created with id:#{course.id}!"
+    end
+  end
+
+  def generate_retired_courses
+    5.times do |i|
+      course = Course.create!(
+        title: Faker::Company.profession,
+        description: Faker::Lorem.paragraph,
+        image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
+        price: Faker::Number.decimal(2),
+        category_id: rand(1..10),
+        retired: DateTime.now
+        )
+      puts "Retired course #{i}: #{course.title} created with id: #{course.id}!"
     end
   end
 end
