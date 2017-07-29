@@ -1,0 +1,30 @@
+<body class="category-show-page">
+    <div class="container">
+      <header class="jumbotron hero-spacer">
+
+        <% if @categories.blank? %>
+          <h4>There are no categories containing the term <%= params[:search] %>.</h4>
+        <% else %>
+          <% @categories.each do |category| %>
+          <h2><%= category.title %></h2>
+              </header>
+                <div class="row text-center">
+                  <% category.courses.each do |course| %>
+                  <div class="col-md-3 col-sm-6 hero-feature">
+                    <div class="thumbnail">
+                      <img src="<%= course.image %>" class="course-image">
+                        <div class="caption">
+                    <h4><%= link_to course.title, course_path(course) %></h4>
+                    <p><%= course.description %></p>
+                    <%= button_to "Add to Cart", carts_path(course_id: course.id), class: "btn btn-primary" %>
+                    </div>
+                </div>
+              </div>
+            <% end %>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</body>
