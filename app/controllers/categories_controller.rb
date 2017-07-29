@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.search(params[:search])
+    @course_searches = Course.search(params[:search])
   end
 
 end

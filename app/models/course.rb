@@ -6,4 +6,8 @@ class Course < ApplicationRecord
   belongs_to :category
   has_many :user_courses
   has_many :users, through: :user_courses
+
+  def self.search(search)
+    where("lower(title) LIKE lower(?)", "%#{search.strip}%")
+  end
 end
