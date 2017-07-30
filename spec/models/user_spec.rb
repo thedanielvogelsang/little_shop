@@ -32,12 +32,15 @@ RSpec.describe User, type: :model do
 
   context 'enum role' do
     it 'can be created as an admin' do
-      admin = User.create(username: 'DVOG', password: 'password', email: 'email@gmail.com', first_name: 'd', last_name: 'v', role: 1)
-      expect(admin.admin?).to be_truthy
+      admin = create(:user, role: 1)
+
       expect(admin.role).to eq('admin')
+      expect(admin.default?).to be false
     end
+
     it 'can be created as default user by default' do
-      default = User.create(username: 'DVOG', password: 'password', email: 'email@gmail.com', first_name: 'd', last_name: 'v')
+      default = create(:user)
+
       expect(default.role).to eq('default')
       expect(default.default?).to be_truthy
     end
