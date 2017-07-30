@@ -1,14 +1,17 @@
 <h3> My Orders</h3>
-
-<table>
-  <th> ID </th>
-  <th> status </th>
-  <th> user ID</th>
-  <%= @orders.each do |order| %>
-    <tr>
-      <td> <%= order.id %></td>
-      <td> <%= order.status %></td>
-      <td> <%= order.user_id %></td>
-    </tr>
-    <% end %>
-</table>
+ <% if @orders == [] %>
+  <h3> <%= "You have no orders" %> </h3>
+ <% else %>
+  <table>
+    <th> ID </th>
+    <th> status </th>
+    <th> user ID</th>
+    <%= @orders.each do |order| %>
+      <tr>
+        <td> <%= order.id %></td>
+        <td> <%= order.status %></td>
+        <td> <%= order.user_id %></td>
+      </tr>
+      <% end %>
+  </table>
+<% end %>

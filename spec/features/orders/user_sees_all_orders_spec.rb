@@ -14,7 +14,7 @@ RSpec.feature "Authenticated user visits /orders" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
 
-      visit orders_path(user_id: @user_1.id)
+      visit orders_path
 
       expect(page).to have_content("My Orders")
       expect(page).to have_content("completed")
@@ -31,13 +31,12 @@ RSpec.feature "Authenticated user visits /orders" do
       order_2 = Order.create(status: "cancelled")
       order_3 = Order.create(status: "paid")
       @user_1.orders = order_1, order_2
-      @user_2.orders << order_3
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
 
-      visit orders_path(user_id: @user_1.id)
+      visit orders_path
 
-      expect(page).to have_content("The page you were looking for doesn't exist")
+      expect(page).to have_content("You have no orders")
     end
   end
 end
