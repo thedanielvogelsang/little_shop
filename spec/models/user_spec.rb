@@ -12,9 +12,11 @@ RSpec.describe User, type: :model do
         expect(user1.save).to be false
         expect(user2.save).to be false
       end
+
       it 'cannot have the same username' do
-        user1 = User.create(username: 'DVOG', password: 'password', email: 'email@gmail.com', first_name: 'd', last_name: 'v')
-        new_user = User.new(username: 'DVOG', password: 'password', email: 'email@gmail.com', first_name: 'd', last_name: 'v')
+        user1 = create(:user)
+        new_user = build(:user, username: user1.username)
+
         expect(new_user.save).to be false
       end
     end
