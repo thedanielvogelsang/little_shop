@@ -16,13 +16,12 @@ RSpec.describe Course, type: :model do
   describe 'associations' do
     describe 'with new users' do
       it 'can call users' do
-        category = Category.create(title: 'STEM')
-        user = User.create(username: 'DVOG', password: 'password', email: '123@gmail.com', first_name: 'Daniel', last_name: 'Vogelsang')
-        course = Course.create(title: 'Mathematics', price: 1245.00, description: 'Advanced Computations', image: 'http://image_source.com', category_id: category.id)
+        user = create(:user)
+        course = create(:course)
+        user_course = create(:user_course, user: user, course: course)
 
-        expect(course.users).to be_truthy
-        course.users << user
         expect(course.users.last).to eq(user)
+        expect(user.courses.last).to eq(course)
       end
     end
     describe 'with existing users' do
