@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729195619) do
+ActiveRecord::Schema.define(version: 20170730173202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20170729195619) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "user_courses", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "course_id"
@@ -68,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170729195619) do
   end
 
   add_foreign_key "courses", "categories"
+  add_foreign_key "orders", "users"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"
 end
