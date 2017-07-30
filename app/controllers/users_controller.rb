@@ -11,11 +11,10 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@username}"
     end
-    redirect_to dashboard_path(:user_id => @user.id)
+    redirect_to dashboard_path(user_id: @user.id)
   end
 
-  def show
-  end
+  def show; end
 
   private
 
