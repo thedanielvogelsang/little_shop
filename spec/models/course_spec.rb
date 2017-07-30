@@ -26,21 +26,18 @@ RSpec.describe Course, type: :model do
     end
     describe 'with existing users' do
       it 'it calls only users associated with it' do
-        category = Category.create(title: 'STEM')
-        user = User.create(username: 'DVOG', password: 'password', email: '123@gmail.com', first_name: 'Daniel', last_name: 'Vogelsang')
-        user2 = User.create(username: 'MVOG', password: 'password', email: '123@gmail.com', first_name: 'Daniel', last_name: 'Vogelsang')
-        user3 = User.create(username: 'TVOG', password: 'password', email: '123@gmail.com', first_name: 'Daniel', last_name: 'Vogelsang')
-        course = Course.create(title: 'Mathematics', price: 1245.00, description: 'Advanced Computations', image: 'http://image_source.com', category_id: category.id)
+        user = create(:user)
+        user2 = create(:user)
+        user3 = create(:user)
+        course = create(:course)
+        user_course = create(:user_course, user: user, course: course)
+        user_course1 = create(:user_course, user: user2, course: course)
 
-        course.users << user
-        course.users << user2
 
         expect(course.users).to_not include(user3)
         expect(course.users).to include(user)
         expect(course.users).to include(user2)
       end
     end
-    # it { is_expected.to have_many(:user_courses)}
-    # it { should have_many(:users).through(:user_courses) }
   end
 end
