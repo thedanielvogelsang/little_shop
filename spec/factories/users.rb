@@ -9,12 +9,12 @@ FactoryGirl.define do
   end
 
   trait :with_orders do
-    ignore do
+    transient do
       order_count 3
     end
-  end
 
-  after(:create) do |user, evaluator|
-    FactoryGirl.create_list(:order, evaluator.order_count)
+    after(:create) do |user, evaluator|
+      FactoryGirl.create_list(:order, evaluator.order_count)
+    end
   end
 end
