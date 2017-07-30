@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
+  validates_presence_of :status
 
-  enum role: %w(ordered paid cancelled completed)
+  enum status: %w(ordered paid cancelled completed)
 end

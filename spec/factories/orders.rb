@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :order do
-    user nil
+    user
     status 1
   end
 end
