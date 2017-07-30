@@ -3,15 +3,13 @@ require 'rails_helper'
 RSpec.describe Course, type: :model do
   describe 'validations' do
     it 'can only be created with all required attributes' do
-      category = Category.create(title: 'STEM')
-      course = Course.new(title: 'Mathematics', price: 1245.00, description: 'Advanced Computations', image: 'http://image_source.com', category_id: category.id)
-      nil_course = Course.new(price: 1245.00, description: 'Advanced Computations', image: 'http://image_source.com', category_id: category.id)
-      expect(course.save).to be true
-      course.save
-      expect(course.class).to be(Course)
-      expect(nil_course.save).to be false
-      nil_course.title = 'Title'
-      expect(nil_course.save).to be true
+      category = create(:category)
+      valid_course = create(:course, category: category)
+      invalid_course = Course.new(price: 1245.00, description: 'Advanced Computations', image: 'http://image_source.com', category: category)
+
+      expect(valid_course.save).to be true
+      expect(invalid_course.class).to be(Course)
+      expect(invalid_course.save).to be false
     end
   end
 

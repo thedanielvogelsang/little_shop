@@ -4,7 +4,7 @@ RSpec.describe Cart, type: :model do
   before :each do
     @course1 = create(:course)
     @course2 = create(:course)
-    @cart = Cart.new(@course1.id.to_s => 2, @course2.id.to_s => 3)
+    @cart = Cart.new("#{@course1.id}" => 2, "#{@course2.id}" => 3)
   end
 
   describe '#total_price' do
