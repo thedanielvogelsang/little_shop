@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'validations' do
-    describe 'lack of all attributes result in lack of creation' do
+    describe 'must have valid attributes' do
       it "can't be created without first or last name" do
-        user1 = User.new(username: 'DVOG', password: 'password', email: '123@gmail.com')
-        user2 = User.new(username: 'DVOG', password: 'password', email: '123@gmail.com')
+        user1 = build(:user, first_name: nil)
+        user2 = build(:user, last_name: nil)
+
         expect(user1.first_name).to eq(nil)
-        expect(user1.last_name).to eq(nil)
+        expect(user2.last_name).to eq(nil)
         expect(user1.save).to be false
         expect(user2.save).to be false
       end
