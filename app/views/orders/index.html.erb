@@ -1,0 +1,18 @@
+
+        <h2><%= current_user.first_name %>'s Orders</h2>
+        <hr>
+
+        <% @orders.each do |order| %>
+        <% order.course_orders.each do |course_order| %>
+          <p>Course: <%= link_to course_order.course.title, course_path(course_order.course) %></p>
+          <p>Price: <%= number_with_precision(course_order.course.price, precision: 2) %></p>
+          <p>Quantity: <%= course_order.quantity %></p>
+          <p>Subtotal: <%= number_with_precision(course_order.subtotal, precision: 2) %></p>
+          <%= render 'order_status', orders: @orders %>
+          <p>Order Created on: <%= order.format_order_date_time %></p>
+        <% end %>
+      <% end %>
+
+      <% @orders.each do |order| %>
+       <h4>Total Price:<%= number_with_precision(order.total_price, precision: 2)  %></h4>
+     <% end %>

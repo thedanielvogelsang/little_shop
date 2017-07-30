@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :courses, only: [:index, :show]
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create]
+  resources :orders
 
   post '/carts', to: "carts#create"
   get '/cart', to: "carts#show"

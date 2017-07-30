@@ -30,6 +30,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li>
+            <%= link_to 'Orders', orders_path %>
+          </li>
+          <li>
             <%= link_to 'Logout', logout_path, method: :delete %>
           </li>
         <% else %>
