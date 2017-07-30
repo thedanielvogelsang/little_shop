@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+  scope :active, -> { where(retired: nil) }
+
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true

@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   post '/cart', to: 'carts#update'
   get '/dashboard', to: 'users#show'
   get '/login', to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy'
   get ':category_id', to: 'categories#show'
 end
