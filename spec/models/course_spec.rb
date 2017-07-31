@@ -5,7 +5,7 @@ RSpec.describe Course, type: :model do
     it 'can only be created with all required attributes' do
       category = create(:category)
       valid_course = create(:course, category: category)
-      invalid_course = Course.new(price: 1245.00, description: 'Advanced Computations', image: 'http://image_source.com', category: category)
+      invalid_course = build(:course, title: nil)
 
       expect(valid_course.save).to be true
       expect(invalid_course.class).to be(Course)

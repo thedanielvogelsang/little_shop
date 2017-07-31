@@ -4,7 +4,7 @@ RSpec.feature 'authenticated user logs in' do
   before(:each) do
     @user = create(:user, username: 'DVOG', password: 'password')
   end
-  
+
   context 'and after logging in successfully' do
     it 'sees a users dashboard page and can logout' do
       visit('/')
