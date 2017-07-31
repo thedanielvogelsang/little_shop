@@ -33,7 +33,6 @@ RSpec.describe Course, type: :model do
         user_course = create(:user_course, user: user, course: course)
         user_course1 = create(:user_course, user: user2, course: course)
 
-
         expect(course.users).to_not include(user3)
         expect(course.users).to include(user)
         expect(course.users).to include(user2)

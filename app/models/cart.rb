@@ -13,7 +13,7 @@ class Cart
 
   def find_by_course_id
     ids = content.keys
-    Course.where({id: ids})
+    Course.where(id: ids)
   end
 
   def add_course(id)

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'unauthenticated user visits homepage' do
-
   it 'can login and see dashboard' do
     @user = create(:user, username: 'DVOG', password: 'password')
 
