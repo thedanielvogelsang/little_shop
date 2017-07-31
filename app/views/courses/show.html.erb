@@ -1,6 +1,12 @@
 <h1> <%= @course.title %> </h1>
+  <%= image_tag @course.image %>
+<div>
+  <p><%= @course.description %><br>
+     <strong><%= @course.price %></strong></p>
 
-<div
-  <p><%= @course.description %></p>
 </div>
-<%= button_to "Add to Cart", carts_path(course_id: @course.id), class: "btn btn-default" %>
+<% unless @course.retired %>
+  <%= button_to "Add to Cart", carts_path(course_id: @course.id), class: "btn btn-default" %>
+<% else %>
+  <%= button_tag "Course Retired", class: "btn btn-default disabled" %>
+<% end %>

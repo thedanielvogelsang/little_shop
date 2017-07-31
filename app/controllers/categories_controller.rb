@@ -5,8 +5,10 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.search(params[:search])
-    @course_searches = Course.search(params[:search])
+    if params[:search].present?
+      @categories = CategoryCourseSearch.new(query: params[:search]).results
+    else
+      @categories = Category.all
+    end
   end
-
 end
