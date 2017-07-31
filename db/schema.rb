@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729195619) do
+ActiveRecord::Schema.define(version: 20170730173202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20170729195619) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "course_orders", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "course_id"
+    t.integer "quantity"
+    t.decimal "subtotal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_orders_on_course_id"
+    t.index ["order_id"], name: "index_course_orders_on_order_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -47,6 +58,14 @@ ActiveRecord::Schema.define(version: 20170729195619) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "user_courses", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "course_id"
@@ -67,7 +86,10 @@ ActiveRecord::Schema.define(version: 20170729195619) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "course_orders", "courses"
+  add_foreign_key "course_orders", "orders"
   add_foreign_key "courses", "categories"
+  add_foreign_key "orders", "users"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"
 end
