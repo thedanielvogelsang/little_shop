@@ -7,7 +7,6 @@ class CourseOrder < ApplicationRecord
 
   after_create :set_subtotal
 
-#move to application_controller; call comes thru orders_controller
   def set_subtotal
     unless quantity.zero?
       update_attribute(:subtotal, course.price * quantity)

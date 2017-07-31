@@ -18,6 +18,7 @@ RSpec.feature "user visits /orders and sees link to past orders" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+      visit dashboard_path
       click_link "My Orders"
 
       expect(current_path).to eq("/orders")
