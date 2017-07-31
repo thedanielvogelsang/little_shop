@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
-    @cart = Cart.new(session[:cart])
+    @courses = Course.active
   end
 
   def show

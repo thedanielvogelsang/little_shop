@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :courses, only: [:index, :show]
   resources :users, only: [:new, :create]
+  resources :orders, only: [:index, :new, :create, :update, :show]
   resources :sessions, only: [:new, :create]
 
   post '/carts', to: "carts#create"
@@ -11,5 +12,6 @@ Rails.application.routes.draw do
   post '/cart', to: 'carts#update'
   get '/dashboard', to: 'users#show'
   get '/login', to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy'
   get ':category_id', to: 'categories#show'
 end
