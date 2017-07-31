@@ -1,5 +1,6 @@
 class Cart
-  attr_reader :content
+  attr_accessor :content
+
   def initialize(initial_content)
     @content = initial_content || {}
   end

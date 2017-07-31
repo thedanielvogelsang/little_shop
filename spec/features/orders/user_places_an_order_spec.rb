@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+require 'pry'
 RSpec.feature "Authenticated user clicks checkout" do
   describe "it places an order" do
     it "sees confirmation message" do
@@ -11,10 +11,6 @@ RSpec.feature "Authenticated user clicks checkout" do
     visit dashboard_path
 
     @course1 = create(:course)
-    # @course2 = create(:course)
-    # @cart = Cart.new({ @course1.id.to_s => 2, @course2.id.to_s => 3 })
-    # click_link "Cart"
-    # expect(current_path).to eq(cart_path(cart: @cart.content))
 
     visit root_path
     expect(page).to have_content("Course Details")
@@ -31,9 +27,9 @@ RSpec.feature "Authenticated user clicks checkout" do
 
     click_button "Checkout"
     expect(current_path).to eq(orders_path)
-    expect(user.orders.first).to be_truthy
+    expect(page).to have_content(user.orders.last.status)
+    expect(user.orders.sample).to be_truthy
     expect(page).to have_content("Order was successfully placed")
-
     end
   end
 end

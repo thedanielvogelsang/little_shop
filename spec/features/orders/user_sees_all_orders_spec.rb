@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Authenticated user visits /orders" do
-  describe "as an authorized user" do
+  xdescribe "as an authorized user" do
     it "and sees only the orders for that user" do
 
       @user_1 = User.create(username: "Sue", password: "0000")
@@ -14,7 +14,7 @@ RSpec.feature "Authenticated user visits /orders" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
 
-      visit orders_path
+      visit "/orders"
 
       expect(page).to have_content("My Orders")
       expect(page).to have_content("completed")
@@ -22,8 +22,8 @@ RSpec.feature "Authenticated user visits /orders" do
     end
   end
 
-  describe "as an unauthorized user" do
-    it "and sees error page 404" do
+  describe "as an authenticated user" do
+    it "sees only orders that belong to them " do
 
       @user_1 = User.create(username: "Sue", password: "0000")
       @user_2 = User.new(username: "Peter", password: "1111")
