@@ -7,7 +7,8 @@ RSpec.feature "user visits /orders and sees link to past orders" do
       user = create(:user)
       course1 = create(:course)
       course2 = create(:course)
-      cart = Cart.new({ course1.id.to_s => 2, course2.id.to_s => 3 })
+      #test passes without this line
+      #cart = Cart.new({ course1.id.to_s => 2, course2.id.to_s => 3 })
       order = create(:order, user_id: user.id)
       course_order1 = create(:course_order,
                             order_id: order.id,
