@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
+<<<<<<< HEAD
   before :each do
     user = User.create(username: "MakingOrders", password: "0000")
     @order = Order.create(user_id: user.id)
@@ -17,4 +18,15 @@ RSpec.describe Order, type: :model do
         expect(@order.status).to eq("ordered")
       end
     end
+=======
+  describe "Validations" do
+    it { is_expected.to validate_presence_of(:user_id) }
+    it { is_expected.to validate_presence_of(:status) }
+  end
+
+  describe "associations" do
+    it { is_expected.to have_many(:course_orders) }
+    it { should have_many(:courses).through(:course_orders) }
+  end
+>>>>>>> remotes/origin/ya-story-13-viewing-past-orders
 end

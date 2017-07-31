@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :courses, only: [:index, :show]
   resources :users, only: [:new, :create]
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :new, :create, :update]
   resources :sessions, only: [:new, :create]
 
   post '/carts', to: "carts#create"
