@@ -5,6 +5,13 @@
   <div class="total-price">
     <h3>$ Cart Total: <%= @cart.total_price %></h3>
   </div>
+  <div class="checkout-or-login-links">
+  <% if current_user %>
+    <h5><%= button_to "Checkout", orders_path, class: "btn btn-default checkout-btn" %></h5>
+  <% else %>
+    <h5><%= link_to "Login", new_session_path %> or <%= link_to "Create Account", new_user_path %> to Checkout <h5>
+  <% end %>
+  </div>
 <div class="">
     <div class="row text-center">
       <% @courses.each do |course| %>
