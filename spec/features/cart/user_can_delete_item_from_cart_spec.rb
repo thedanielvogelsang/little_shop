@@ -1,16 +1,15 @@
 require 'rails_helper'
 
-RSpec.feature "user visits cart" do
-
-  scenario "can delete course from cart and link back to item" do
+RSpec.feature 'user visits cart' do
+  scenario 'can delete course from cart and link back to item' do
     @course1 = create(:course)
 
     visit root_path
-    click_on "Add to Cart"
-    click_on "Add to Cart"
+    click_on 'Add to Cart'
+    click_on 'Add to Cart'
 
     visit cart_path
-    click_on "Remove"
+    click_on 'Remove'
 
     expect(current_path).to eq(cart_path)
     expect(page).to have_css('div.alert-success')

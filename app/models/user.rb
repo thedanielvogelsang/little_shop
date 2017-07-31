@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :courses, through: :user_courses
   has_many :orders
 
-  enum role: %w(default admin)
+  enum role: %w[default admin]
 end
