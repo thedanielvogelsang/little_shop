@@ -18,5 +18,7 @@ class Cart
 
   def subtract_course(id)
     content[id.to_s] = content[id.to_s] - 1
+    content.delete(id.to_s) if content[id.to_s] <= 1
   end
+
 end
