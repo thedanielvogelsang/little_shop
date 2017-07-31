@@ -7,4 +7,14 @@ FactoryGirl.define do
     email "MyString"
     role 1
   end
+
+  trait :with_orders do
+    transient do
+      order_count 3
+    end
+
+    after(:create) do |user, evaluator|
+      FactoryGirl.create_list(:order, evaluator.order_count)
+    end
+  end
 end
