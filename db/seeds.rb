@@ -24,7 +24,8 @@ class Seed
         username: Faker::Internet.unique.user_name,
         password: Faker::Internet.password,
         email: Faker::Internet.email,
-        role: rand(0..1))
+        role: rand(0..1)
+      )
 
       puts "User #{i}: #{user.first_name} - #{user.role} created!"
     end
@@ -32,8 +33,8 @@ class Seed
 
   def generate_categories
     10.times do |i|
-    category = Category.create!(
-      title: Faker::Commerce.department
+      category = Category.create!(
+        title: Faker::Commerce.department
       )
       puts "Category #{i}: #{category.title}!"
     end
@@ -47,7 +48,7 @@ class Seed
         image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         price: Faker::Number.decimal(2),
         category_id: rand(1..10)
-        )
+      )
       puts "Course #{i}: #{course.title} created with id:#{course.id}!"
     end
   end
@@ -61,7 +62,7 @@ class Seed
         price: Faker::Number.decimal(2),
         category_id: rand(1..10),
         retired: DateTime.now
-        )
+      )
       puts "Retired course #{i}: #{course.title} created with id: #{course.id}!"
     end
   end

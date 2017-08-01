@@ -1,26 +1,29 @@
 require 'rails_helper'
 
-describe "User sees all items for a single category" do
-  scenario "a user sees all the courses under a category" do
-    category_1 = create(:category)
-    course_1   = create(:course, category: category_1)
-    course_2   = create(:course, category: category_1)
+describe 'User sees all items for a single category' do
+  scenario 'a user sees all the courses under a category' do
+    category1 = create(:category)
+    course1   = create(:course, category: category1)
+    course2   = create(:course, category: category1)
 
-    category_2 = create(:category)
-    course_3   = create(:course, category: category_2)
-    course_4   = create(:course, category: category_2)
+    category2 = create(:category)
+    course3   = create(:course, category: category2)
+    course4   = create(:course, category: category2)
 
-    visit "/#{category_1.slug}"
+    visit "/#{category1.slug}"
 
+    expect(current_path).to eq("/#{category1.slug}")
+    expect(page).to have_content("#{course1.title}")
+    expect(page).to have_content("#{course1.description}")
+    expect(page).to have_content("#{course2.title}")
+    expect(page).to have_content("#{course2.description}")
 
-    expect(current_path).to eq("/#{category_1.slug}")
-    expect(page).to have_content("MyCourse")
-    expect(page).to have_content("Course Details")
+    visit "/#{category2.slug}"
 
-    visit "/#{category_2.slug}"
-
-    expect(current_path).to eq("/#{category_2.slug}")
-    expect(page).to have_content("#{course_3.title}")
-    expect(page).to have_content("Course Details")
+    expect(current_path).to eq("/#{category2.slug}")
+    expect(page).to have_content("#{course3.title}")
+    expect(page).to have_content("#{course3.description}")
+    expect(page).to have_content("#{course4.title}")
+    expect(page).to have_content("#{course4.description}")
   end
 end
