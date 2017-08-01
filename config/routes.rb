@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
   get ':category_id', to: 'categories#show'
+
+  scope :admin, as: :admin do
+    get '/dashboard', to: 'admin#show'
+  end
 end
