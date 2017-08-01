@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 
   def index
     if params[:search].present?
-      @categories = CategoryCourseSearch.new(query: params[:search]).results
+      @results = Category.search(params[:search])
     else
       @categories = Category.all
     end
