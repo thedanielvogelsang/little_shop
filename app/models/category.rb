@@ -6,7 +6,7 @@ class Category < ApplicationRecord
   validates_presence_of :title
 
   def search(search)
-    @results = search.each do |term|
+    search.each do |term|
       where("title LIKE ?", "%#{term}%")
       Course.where(title: "#{term}")
     end

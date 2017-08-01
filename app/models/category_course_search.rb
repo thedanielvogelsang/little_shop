@@ -1,6 +1,4 @@
 class CategoryCourseSearch < ApplicationRecord
-  extend Textacular
-
   attr_accessor :query
 
   belongs_to :searchable,  polymorphic: true
