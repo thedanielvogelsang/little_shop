@@ -1,0 +1,31 @@
+<h3>Order # <%= @order.id %></h3>
+<h3>Order Total: $<%= @order.total_price %> </h3>
+<h3>Price Breakdown:</h3>
+<ul>
+    <% @order.course_orders.each do |course_order| %>
+    <li>
+   <%= "You purchased #{course_order.quantity} of #{course_order.course.title} for subtotal of $#{course_order.subtotal}"%>
+    <% end %>
+    </li>
+</ul>
+<h3>Order Status: <%= @order.status %></h3>
+  <% if @order.status == "cancelled " || @order.status == "completed"%>
+<h3> Order Updated on: <%= @order.updated_at %>
+  <% else %>
+<h3>Order Date: <%= @order.created_at %></h3>
+ <% end %>
+
+<!-- join where course id = course_order.course_id and return price * quantity -->
+<h3>Courses Purchased: <%= @order.courses.count %></h3>
+<table class="table">
+  <th> Price </th>
+  <th> Name </th>
+  <th> Description</th>
+  <% @courses.each do |course| %>
+    <tr>
+      <td> $<%= course.price %></td>
+      <td> <%= link_to course.title, course_path(course) %></td>
+      <td> <%= course.description %></td>
+    </tr>
+  <% end %>
+</table>
