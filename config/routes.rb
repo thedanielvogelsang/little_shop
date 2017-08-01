@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'courses#index'
   resources :categories, only: [:show]
   resources :courses, only: [:index, :show]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
   resources :sessions, only: [:new, :create]
 
   post '/carts', to: "carts#create"
@@ -17,6 +17,4 @@ Rails.application.routes.draw do
   scope :admin, as: :admin do
     get '/dashboard', to: 'admin#show'
   end
-
-  resources :admin, only: [:edit, :update]
 end

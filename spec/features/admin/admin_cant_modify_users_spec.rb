@@ -23,8 +23,14 @@ RSpec.feature "user logs in as admin" do
       fill_in "session[username]", with: "#{@user.username}"
       fill_in "session[password]", with: "#{@user.password}"
       click_button "Login"
+      expect(page).to have_content("DVOG")
       click_link("Edit User Info")
-      save_and_open_page
+      fill_in "user[username]", with: "NEW USERNAME"
+      fill_in "user[password]", with: "#{@user.password}"
+      click_button "Update Account"
+      expect(current_path).to eq(admin_dashboard_path)
+      expect(page).to have_content("NEW USERNAME")
+      expect(page).to_not have_content("DVOG")
     end
   end
 end

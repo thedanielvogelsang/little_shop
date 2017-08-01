@@ -18,6 +18,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id].to_i)
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.save
+      redirect_to admin_dashboard_path
+    else
+      redirect_back(fallback_location: edit_user_path)
+    end
+  end
+
   private
 
   def user_params

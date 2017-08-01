@@ -4,9 +4,4 @@ class AdminController < ApplicationController
   def show
     @user = current_user
   end
-
-  private
-    def check_admin
-      render file: 'public/404' unless current_admin
-    end
 end
