@@ -14,8 +14,14 @@ class ApplicationController < ActionController::Base
   def check_admin
     render file: 'public/404' unless current_admin
   end
-
+  
   def set_navbar_categories
     @nav_bar_categories = Category.all
+  end
+
+  def current_user?
+    if current_user.id != params[:user_id].to_i
+      render file: "/public/404"
+    end
   end
 end

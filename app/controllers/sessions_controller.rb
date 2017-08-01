@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     @user = User.find_by(username: params[:session][:username])
@@ -9,7 +8,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Logged in as #{@user.username}"
       user_path
     else
-      flash[:error] = "Invalid login"
+      flash[:error] = 'Invalid login'
       redirect_to('/login')
     end
   end

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@username}"
     end
-    redirect_to dashboard_path(:user_id => @user.id)
+    redirect_to dashboard_path(user_id: @user.id)
   end
 
   def show
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    if @user.save
-      redirect_to admin_dashboard_path
+    if @user == current_user
+      render :show
     else
-      redirect_back(fallback_location: edit_user_path)
+      redirect_back(fallback_location: root_path)
     end
   end
 
