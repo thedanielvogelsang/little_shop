@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :orders, only: [:index, :new, :create, :update, :show]
   resources :sessions, only: [:new, :create]
-  
+
   post '/carts', to: 'carts#create'
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
