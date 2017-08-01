@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: 'courses#index'
   resources :categories, only: [:show]
   resources :courses, only: [:index, :show]
-  resources :users, only: [:new, :create]
+  
+  resources :users, only: [:new, :create, :edit, :update]
+  
   resources :orders, only: [:index, :new, :create, :update, :show]
   resources :sessions, only: [:new, :create]
   
@@ -14,4 +16,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
   get ':category_id', to: 'categories#show'
+
+  scope :admin, as: :admin do
+    get '/dashboard', to: 'admin#show'
+  end
 end
