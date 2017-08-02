@@ -54,7 +54,7 @@ class Seed
         description: Faker::Lorem.paragraph,
         image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         price: Faker::Number.decimal(2),
-        category_id: rand(1..10)
+        category_id: rand(1..8)
       )
       puts "Course #{i}: #{course.title} created with id:#{course.id}!"
     end
@@ -68,7 +68,8 @@ class Seed
         image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         price: Faker::Number.decimal(2),
         category_id: rand(1..10),
-        retired: DateTime.now
+        retired: DateTime.now,
+        status: 1
       )
       puts "Retired course #{i}: #{course.title} created with id: #{course.id}!"
     end
