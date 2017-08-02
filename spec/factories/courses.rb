@@ -7,6 +7,6 @@ FactoryGirl.define do
     price 50.00
     image 'https://robohash.org/0.png'
     category
-    retired nil
+    status 0
   end
 end

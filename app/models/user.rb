@@ -8,8 +8,6 @@ class User < ApplicationRecord
                         :zip_code
   validates :username, presence: true, uniqueness: true
 
-  has_many :user_courses
-  has_many :courses, through: :user_courses
   has_many :orders
 
   enum role: %w[default admin]
