@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   scope :admin, as: :admin do
     get '/dashboard', to: 'admin#show'
   end
+
+  resources :admin, only: [:edit, :update]
 end
