@@ -4,21 +4,23 @@
       <h2>Search Results</h2>
     </header>
 
-    <% if @categories.blank? %>
-      <h4>There are no items containing the term <%= params[:search] %>.</h4>
-      <% else %>
-      <div class="row">
+      <% if @categories.blank? %>
+        <h4>There are no items containing the term <%= params[:search] %>.</h4>
+        <% else %>
+        <div class="row">
+          <div class="col-md-3"></div>
 
-      <div class="row text-center">
-        <% @categories.each do |category| %>
-          <h4><%= link_to category.title, category_path(category) %></h4>
-           <% category.courses.map do |course| %>
-          <p>  <%=  link_to course.title, course_path(course) %></p>
+          <div class="col-md-6">
+            <% @categories.each do |category| %>
+            <div class="list-group">
+                <h2><%= link_to category.title, category.slug %></h2>
+                 <% category.courses.map do |course| %>
+                <h4>  <%=  link_to course.title, course_path(course), class: "list-group-item list-group-item-action" %></h4>
+              <% end %>
+            </div>
+              <% end %>
+            </div>
         <% end %>
-      </div>
-        <% end %>
+        <div class="col-md-3"></div>
     </div>
-  <% end %>
-</div>
-
 </body>
