@@ -76,19 +76,19 @@ class Seed
   end
 
   def generate_orders
-    25.times do |i|
+    50.times do |i|
       order = Order.create!(
       user_id: rand(1..50),
       status: rand(0..3)
       )
-      if order.status == 'default'
-        puts "Order #{i}: default order created with #{order.user} created with id: #{order.id}"
+      if order.status == 'ordered'
+        puts "Order #{i}: 'ordered' order created with #{order.user} created with id: #{order.id}"
       elsif order.status == 'paid'
-        puts "Order #{i}: paid order created with #{order.user} created with id: #{order.id}"
+        puts "Order #{i}: 'paid' order created with #{order.user} created with id: #{order.id}"
       elsif order.status == 'cancelled'
-        puts "Order #{i}: cancelled order created with #{order.user} created with id: #{order.id}"
+        puts "Order #{i}: 'cancelled' order created with #{order.user} created with id: #{order.id}"
       else order.status == 'completed'
-        puts "Order #{i}: completed order created with #{order.user} created with id: #{order.id}"
+        puts "Order #{i}: 'completed' order created with #{order.user} created with id: #{order.id}"
       end
     end
   end
