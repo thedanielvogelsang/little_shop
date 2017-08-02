@@ -1,0 +1,28 @@
+<body>
+  <div>
+    <div class="container">
+      <h3>Create New Account:</h3>
+      <%= form_for @user do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name%><br>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %><br>
+      <%= f.label :username %>
+      <%= f.text_field :username %><br>
+      <%= f.label :password %>
+      <%= f.text_field :password %><br>
+      <%= f.label :street_address %>
+      <%= f.text_field :street_address %><br>
+      <%= f.label :unit_number %>
+      <%= f.text_field :unit_number %><br>
+      <%= f.label :city %>
+      <%= f.text_field :city %><br>
+      <%= f.label :state %>
+      <%= f.text_field :state %><br>
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %><br>
+      <%= f.submit "Update Account" %>
+      <% end %>
+    </div>
+  </div>
+</body>

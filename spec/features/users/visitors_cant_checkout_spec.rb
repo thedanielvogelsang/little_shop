@@ -39,7 +39,11 @@ RSpec.feature "visitor adds items to cart and attempts to checkout" do
       fill_in "user[last_name]", with: "Vog"
       fill_in "user[username]", with: "DVOG"
       fill_in "user[password]", with: "password"
-      fill_in "user[email]", with: "Dan@gmail.com"
+      fill_in 'user[street_address]', with: "123 Blueberry Lane"
+      fill_in 'user[unit_number]', with: "123"
+      fill_in 'user[city]', with: "Seattle"
+      fill_in 'user[state]', with: "Washington"
+      fill_in 'user[zip_code]', with: "123456"      
       within("//form") do
         click_on "Create Account"
       end
