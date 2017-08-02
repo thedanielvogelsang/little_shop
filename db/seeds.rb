@@ -81,7 +81,7 @@ class Seed
       user_id: rand(1..50),
       status: rand(0..3)
       )
-      3.times do |t|
+      3.times do
         order.course_orders.create(course_id: rand(1..50), quantity: rand(1...5))
       end
       if order.status == 'default'
