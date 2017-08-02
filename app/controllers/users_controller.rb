@@ -24,8 +24,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    if @user == current_user
-      render :show
+    if current_user.admin?
+      redirect_to admin_dashboard_path
+    elsif @user == current_user
+    render :show
     else
       redirect_back(fallback_location: root_path)
     end

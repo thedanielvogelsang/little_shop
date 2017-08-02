@@ -1,5 +1,6 @@
-<h1>Admin Dashboard</h1>
-
+<h1><%= current_user.username.capitalize %>'s Admin Dashboard</h1>
+<%= link_to "Edit User Info", edit_user_path(current_user) %>
+<hr>
 Ordered: <%= @orders.ordered.count %><br>
 Paid: <%= @orders.paid.count %><br>
 Cancelled: <%= @orders.cancelled.count %><br>
