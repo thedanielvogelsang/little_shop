@@ -7,9 +7,12 @@ class Course < ApplicationRecord
 
   has_many :user_courses
   has_many :users, through: :user_courses
-
   has_many :course_orders
   has_many :orders, through: :course_orders
 
   enum status: %w[active inactive]
+  
+  def self.search(search)
+    where("lower(title) LIKE lower(?)", "%#{search.strip}%")
+  end
 end
