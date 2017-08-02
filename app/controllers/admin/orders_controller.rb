@@ -6,4 +6,12 @@ class Admin::OrdersController < Admin::AdminController
       @orders = Order.all
     end
   end
+
+  def update
+    order = Order.find(params[:id])
+    if params[:status]
+      order.update(status: params[:status])
+      redirect_to admin_dashboard_path
+    end
+  end
 end

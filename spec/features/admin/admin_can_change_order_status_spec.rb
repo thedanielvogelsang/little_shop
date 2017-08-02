@@ -6,15 +6,30 @@ RSpec.feature 'admin visits dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 
-  scenario "can change order status" do
-    ordered_order = create(:order, status: 0)
-    paid_order = create(:order, status: 1)
-
+  scenario "can change ordered and paid status" do
+    order = create(:order, status: :ordered)
     visit 'admin/dashboard'
-    click_button 'mark as paid'
-    click_button 'mark as completed'
 
-    expect(ordered_order.status).to eq(1)
-    expect(paid_order.status).to eq(3)
+    click_link 'mark as paid'
+    expect(order.reload.status).to eq('paid')
+
+    click_link 'mark as completed'
+    expect(order.reload.status).to eq('completed')
+  end
+
+  scenario "can cancel ordered order" do
+    order = create(:order, status: :ordered)
+    visit 'admin/dashboard'
+
+    click_link 'cancel'
+    expect(order.reload.status).to eq('cancelled')
+  end
+
+  scenario "can cancel paid order" do
+    order = create(:order, status: :paid)
+    visit 'admin/dashboard'
+
+    click_link 'cancel'
+    expect(order.reload.status).to eq('cancelled')
   end
 end
