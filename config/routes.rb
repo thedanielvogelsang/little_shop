@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   resources :orders, only: [:index, :new, :create, :update, :show]
   resources :sessions, only: [:new, :create]
-  
+
   post '/carts', to: 'carts#create'
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get ':category_id', to: 'categories#show'
 
-  scope :admin, as: :admin do
-    get '/dashboard', to: 'admin#show'
+  namespace :admin do
+    get '/dashboard', to: 'orders#index'
+    resources :orders, only: [:update]
   end
 end
