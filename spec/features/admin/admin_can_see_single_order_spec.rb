@@ -14,7 +14,11 @@ RSpec.feature 'admin visits order page' do
 
     expect(page).to have_content(@order.user.first_name)
     expect(page).to have_content(@order.user.last_name)
-    # expect(page).to have_content(@order.user.address)
+    expect(page).to have_content(@order.user.street_address)
+    expect(page).to have_content(@order.user.unit_number)
+    expect(page).to have_content(@order.user.city)
+    expect(page).to have_content(@order.user.state)
+    expect(page).to have_content(@order.user.zip_code)
     expect(page).to have_content(@order.created_at)
     expect(page).to have_content(@order.total_price)
 

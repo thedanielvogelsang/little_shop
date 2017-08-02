@@ -4,7 +4,11 @@
 <h3>Customer Information:</h3>
   <ul>
     <li><%= @user.first_name %> <%= @user.last_name %></li>
-    <!-- <li><#%= @user.address %></li> -->
+    <li><%= @user.street_address %></li>
+    <% if @user.unit_number %>
+      <li><%= @user.unit_number %></li>
+    <% end %>
+    <li><%= @user.city %>, <%= @user.state %> <%= @user.zip_code %></li>
   </ul>
 <br>
 <hr>
