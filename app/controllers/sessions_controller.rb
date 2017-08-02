@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.username}"
       user_path
-      redirect_to dashboard_path(user_id: @user.id)
     else
       flash[:error] = 'Invalid login'
       redirect_to('/login')
