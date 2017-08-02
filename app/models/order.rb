@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-
   belongs_to :user
   has_many :course_orders
   has_many :courses, through: :course_orders

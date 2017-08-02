@@ -6,11 +6,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.username}"
-      if current_user.admin?
-        redirect_to admin_dashboard_path(@user)
-      else
-        redirect_to dashboard_path(user_id: @user.id)
-      end
+      user_path
     else
       flash[:error] = 'Invalid login'
       redirect_to('/login')
@@ -23,4 +19,14 @@ class SessionsController < ApplicationController
 
     redirect_to root_path
   end
+
+  private
+
+    def user_path
+      if current_admin
+        redirect_to admin_dashboard_path(:user_id => @user)
+      else
+        redirect_to dashboard_path(:user_id => @user.id)
+      end
+    end
 end

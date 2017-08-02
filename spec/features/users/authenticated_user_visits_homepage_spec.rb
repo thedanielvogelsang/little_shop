@@ -17,7 +17,11 @@ RSpec.feature 'unauthenticated user visits homepage' do
     expect(page).to have_content(@user.username)
     expect(page).to have_content(@user.first_name)
     expect(page).to have_content(@user.last_name)
-    expect(page).to have_content(@user.email)
+    expect(page).to have_content(@user.street_address)
+    expect(page).to have_content(@user.unit_number)
+    expect(page).to have_content(@user.city)
+    expect(page).to have_content(@user.state)
+    expect(page).to have_content(@user.zip_code)
     expect(page).to have_content("Logged in as #{@user.username}")
   end
 end

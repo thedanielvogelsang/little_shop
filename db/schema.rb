@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20170802023859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.index "to_tsvector('english'::regconfig, (title)::text)", name: "index_categories_on_title", using: :gin
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
@@ -87,7 +86,11 @@ ActiveRecord::Schema.define(version: 20170802023859) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
+    t.string "street_address"
+    t.string "unit_number"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
