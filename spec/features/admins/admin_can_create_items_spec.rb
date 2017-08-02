@@ -5,13 +5,9 @@ describe "Admin can create new items" do
     admin = create(:user, role: 1)
     category = create(:category, title: "Coding")
 
-    visit login_path
-    fill_in "Username", with: admin.username
-    fill_in "Password", with: admin.password
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    click_button "Login"
-
-    expect(current_path).to eq(admin_dashboard_path(admin))
+    visit admin_dashboard_path
 
     click_link "Add new item"
 
@@ -22,12 +18,13 @@ describe "Admin can create new items" do
     fill_in "course[title]", with: "Ruby on Rails"
     fill_in "course[description]", with: "Best Rails Course Online"
     fill_in "course[price]", with: 55.99
-    page.attach_file("image", Rails.root + "app/assets/images/course_default.png")
+    fill_in "course[image]", with: "http://robohash.org/mike"
     select "active", from: "Status"
 
     click_button "Create Course"
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content("Ruby on Rails")
+    expect(page).to have_content("Best Rails Course Online")
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user logs in as admin" do
   before(:each) do
-    @user = User.create(username: "DVOG", first_name: "Dan", last_name: "Vog", password: "password", role: 1, email: "dvog@gmail.com")
+    @user = User.create(username: "DVOG", first_name: "Dan", last_name: "Vog", password: "password", role: 1)
     expect(@user.admin?).to be_truthy
     expect(@user.role).to eq("admin")
     visit('/')

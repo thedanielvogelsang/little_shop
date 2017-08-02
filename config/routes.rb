@@ -21,7 +21,5 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'orders#index'
     resources :orders, only: [:update, :show]
     resources :courses, only: [:new, :create, :show, :index, :edit]
-
-    end
   end
 end

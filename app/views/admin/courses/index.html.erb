@@ -9,7 +9,7 @@
   <% @courses.each do |course| %>
     <tr>
       <td><%= image_tag course.image  %></td>
-      <td><%= link_to course.title, course_path(course) %></td>
+      <td><strong><%= link_to course.title, course_path(course) %></strong></td>
       <td><%= course.description %></td>
       <td><%= course.status %></td>
       <td><%= link_to "Edit", edit_admin_course_path(course) %></td>

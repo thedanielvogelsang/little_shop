@@ -1,5 +1,9 @@
 <h1>Admin Dashboard</h1>
 
+<p><%= link_to "Add new item", new_admin_course_path %></p>
+<p><%= link_to "View All Items", admin_courses_path%></p>
+
+
 Ordered: <%= @orders.ordered.count %><br>
 Paid: <%= @orders.paid.count %><br>
 Cancelled: <%= @orders.cancelled.count %><br>

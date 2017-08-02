@@ -1,3 +1,6 @@
 <h1>Admin Dashboard</h1><br>
 <h3><%= @user.username %>'s Admin Page</h3><br>
 <%= link_to "Edit User Info", edit_user_path(current_user) %>
+
+<%= link_to "Add new item", new_admin_course_path %>
+<%= link_to "View All Items", admin_courses_path%>
