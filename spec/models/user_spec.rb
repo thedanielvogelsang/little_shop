@@ -19,6 +19,14 @@ RSpec.describe User, type: :model do
 
         expect(new_user.save).to be false
       end
+
+      it "can't be created without address" do
+        user1 = build(:user, street_address: nil)
+        user2 = build(:user, city: nil)
+
+        expect(user1.save).to be false
+        expect(user2.save).to be false
+      end
     end
     it { is_expected.to validate_presence_of(:username) }
     it { is_expected.to validate_presence_of(:password) }

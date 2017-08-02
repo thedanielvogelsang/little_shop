@@ -23,7 +23,11 @@ class Seed
         last_name: Faker::Name.last_name,
         username: Faker::Internet.unique.user_name,
         password: Faker::Internet.password,
-        email: Faker::Internet.email,
+        street_address: Faker::Address.street_address,
+        unit_number: Faker::Address.secondary_address,
+        city: Faker::Address.city,
+        state: Faker::Address.state,
+        zip_code: Faker::Address.zip_code,
         role: rand(0..1)
       )
       if user.role == 'admin'
