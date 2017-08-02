@@ -1,6 +1,4 @@
 class Course < ApplicationRecord
-  scope :active, -> { where(retired: nil) }
-
   validates :title, presence: true #, uniqueness: true
   validates :description, presence: true
   validates :price, presence: true,  numericality: { greater_than_or_equal_to: 1 }
@@ -14,5 +12,4 @@ class Course < ApplicationRecord
   has_many :orders, through: :course_orders
 
   enum status: %w[active retired]
-
 end

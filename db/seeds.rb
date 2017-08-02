@@ -13,7 +13,7 @@ class Seed
     generate_users
     generate_categories
     generate_active_courses
-    generate_retired_courses
+    generate_inactive_courses
   end
 
   def generate_users
@@ -60,7 +60,7 @@ class Seed
     end
   end
 
-  def generate_retired_courses
+  def generate_inactive_courses
     5.times do |i|
       course = Course.create!(
         title: Faker::Company.profession,
@@ -68,10 +68,9 @@ class Seed
         image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         price: Faker::Number.decimal(2),
         category_id: rand(1..10),
-        retired: DateTime.now,
         status: 1
       )
-      puts "Retired course #{i}: #{course.title} created with id: #{course.id}!"
+      puts "Inactive course #{i}: #{course.title} created with id: #{course.id}!"
     end
   end
 end
