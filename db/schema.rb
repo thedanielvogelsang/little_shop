@@ -67,15 +67,6 @@ ActiveRecord::Schema.define(version: 20170731013150) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "user_courses", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_user_courses_on_course_id"
-    t.index ["user_id"], name: "index_user_courses_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -95,6 +86,4 @@ ActiveRecord::Schema.define(version: 20170731013150) do
   add_foreign_key "course_orders", "orders"
   add_foreign_key "courses", "categories"
   add_foreign_key "orders", "users"
-  add_foreign_key "user_courses", "courses"
-  add_foreign_key "user_courses", "users"
 end
