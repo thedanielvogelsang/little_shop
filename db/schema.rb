@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20170731013150) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
-    t.datetime "retired"
     t.integer "status", default: 0
     t.index ["category_id"], name: "index_courses_on_category_id"
   end
