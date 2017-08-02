@@ -2,16 +2,13 @@
 
 heroku-app link: https://radiant-scrubland-30391.herokuapp.com
 
-Loosely tossing around the idea of creating an app that sells and manages Course packages (education), based on the concept of Coursera.
-
-Categories: Courses (one-to-many; belongs-to?)
-
-
 # Name of the project
 > Additional information or tagline
 
 A brief description of your project, what it is used for and how does life get
 awesome when someone starts to use it.
+
+##NAME### is a pilot program exampling CRUD functionality from a fictional business "##NAME##", based on the real-world "Coursera". The app employs ActiveRecord, Ruby-on-Rails, and uses the MVC model as well as a postgres database. Users, with a default role of registered member upon account creation, may use the site to add desired courses to their cart, and may place their own 'orders' via our checkout-cart system. Unregistered users may add courses to cart, however cannot place an order until officially registered by creating an account. Logged in users may access their own user/dashboard, while admin users may access an admin/dashboard that allows the admin_user to view all orders to date, along with links to individual order pages. Admins may also add, delete, edit, and change the status of courses on the app. Only admins can edit their own user information.
 
 ## Installing / Getting started
 
@@ -19,12 +16,14 @@ A quick introduction of the minimal setup you need to get a hello world up &
 running.
 
 ```shell
-packagemanager install awesome-project
-awesome-project start
-awesome-project "Do something!"  # prints "Nah."
+gem install bundle
+bundle install
+rake db:create
+rake db:migrate
+rake db:seed #prints seed file as users, courses, orders, etc are created.
 ```
 
-Here you should say what actually happens when you execute the code above.
+after installing bundle and downloading the necessary gems, create the database, migrate the table migrations, and seed the database for functional use. Fire up the server and it should be ready to launch!
 
 ## Developing
 
@@ -32,12 +31,16 @@ Here's a brief intro about what a developer must do in order to start developing
 the project further:
 
 ```shell
-git clone https://github.com/your/awesome-project.git
-cd awesome-project/
-packagemanager install
+git clone git@github.com:thedanielvogelsang/little_shop.git
+ (or)
+git clone https://github.com/thedanielvogelsang/little_shop
+cd little_shop
+gem install bundle
+bundle install
+rake db:create
 ```
 
-And state what happens step-by-step.
+after cloning the repository, cd into little_shop directory and feel free to look around. As a postgres database, this app requires, after bundling, that the developer create the database. Therafter, return to the ##Installing section to review further steps.
 
 ### Building
 
@@ -67,9 +70,9 @@ And again you'd need to tell what the previous code actually does.
 ## Features
 
 What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
+* Users can checkout courses and place orders from their cart.
+* Admins can checkout can also add, delete, and edit courses, as well as change course status.
+* Admins also can visit an order index and review past orders.
 
 ## Configuration
 
