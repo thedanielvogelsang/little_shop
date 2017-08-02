@@ -15,7 +15,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user == current_user
       render :show
     else
       redirect_back(fallback_location: root_path)
@@ -25,6 +34,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :password, :email)
+    params.require(:user).permit(:first_name,
+                                 :last_name,
+                                 :username,
+                                 :password,
+                                 :street_address,
+                                 :unit_number,
+                                 :city,
+                                 :state,
+                                 :zip_code)
   end
 end

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: 'courses#index'
   resources :categories, only: [:show]
   resources :courses, only: [:index, :show]
-  resources :users, only: [:new, :create]
+
+  resources :users, only: [:new, :create, :edit, :update]
+
   resources :orders, only: [:index, :new, :create, :update, :show]
   resources :sessions, only: [:new, :create]
 
@@ -16,8 +18,10 @@ Rails.application.routes.draw do
   get ':category_id', to: 'categories#show'
 
   namespace :admin do
-    get '/dashboard', to: 'dashboard#show'
+    get '/dashboard', to: 'orders#index'
+    resources :orders, only: [:update, :show]
     resources :courses, only: [:new, :create, :show, :index, :edit]
-  end
 
+    end
+  end
 end
