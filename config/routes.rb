@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :new, :create, :update, :show]
   resources :sessions, only: [:new, :create]
 
-  scope :admin, as: :admin do
-    get '/dashboard', to: 'admin#show'
-  end
-
   post '/carts', to: 'carts#create'
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
@@ -18,4 +14,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
   get ':category_id', to: 'categories#show'
+
+  namespace :admin do
+    get '/dashboard', to: 'orders#index'
+  end
 end

@@ -26,8 +26,11 @@ class Seed
         email: Faker::Internet.email,
         role: rand(0..1)
       )
-
-      puts "User #{i}: #{user.first_name} - #{user.role} created!"
+      if user.role == 'admin'
+        puts "User #{i}: #{user.username} - #{user.password} created!"
+      else
+        puts "User #{i}: #{user.first_name} - #{user.role} created!"
+      end
     end
   end
 

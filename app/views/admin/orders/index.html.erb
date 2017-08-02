@@ -1,5 +1,15 @@
 <h1>Admin Dashboard</h1>
 
+Ordered: <%= @orders.ordered.count %><br>
+Paid: <%= @orders.paid.count %><br>
+Cancelled: <%= @orders.cancelled.count %><br>
+Completed: <%= @orders.completed.count %><br>
+<br>
+<hr>
+<% Order.statuses.keys.each do |status| %>
+  <%= link_to "#{status}", admin_dashboard_path, status: status %>
+<% end %>
+
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -9,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= @orders.each do |order| %>
+      <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.id, order_path(order) %></td>
         <td><%= order.status %></td>
