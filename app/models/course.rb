@@ -11,5 +11,5 @@ class Course < ApplicationRecord
   has_many :course_orders
   has_many :orders, through: :course_orders
 
-  enum status: %w[active retired]
+  enum status: %w[active inactive]
 end

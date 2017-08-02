@@ -14,8 +14,8 @@ RSpec.feature 'user goes to course show' do
     expect(page).to have_button('Add to Cart')
   end
 
-  scenario 'and sees retired course' do
-    course = create(:course, retired: DateTime.now)
+  scenario 'and sees inactive course' do
+    course = create(:course, status: 1)
 
     visit course_path(course)
 
@@ -24,6 +24,6 @@ RSpec.feature 'user goes to course show' do
     expect(page).to have_content(course.price)
     expect(page).to have_xpath("//img[contains(@src,'#{course.image}')]")
     expect(page).to_not have_button('Add to Cart')
-    expect(page).to have_button('Course Retired')
+    expect(page).to have_button('Course Inactive')
   end
 end
