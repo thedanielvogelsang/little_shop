@@ -6,8 +6,9 @@ Cancelled: <%= @orders.cancelled.count %><br>
 Completed: <%= @orders.completed.count %><br>
 <br>
 <hr>
+filter by:
 <% Order.statuses.keys.each do |status| %>
-  <%= link_to "#{status}", admin_dashboard_path, status: status %>
+  <%= link_to "#{status}", admin_dashboard_path(status: status) %>
 <% end %>
 
 <div class="table-responsive">
@@ -23,6 +24,7 @@ Completed: <%= @orders.completed.count %><br>
       <tr>
         <td><%= link_to order.id, order_path(order) %></td>
         <td><%= order.status %></td>
+        <!-- <%= link_to 'mark as paid' %> -->
       </tr>
       <% end %>
     </tbody>
