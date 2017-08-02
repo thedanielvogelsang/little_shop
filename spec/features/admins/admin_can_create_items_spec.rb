@@ -22,7 +22,7 @@ describe "Admin can create new items" do
     fill_in "course[title]", with: "Ruby on Rails"
     fill_in "course[description]", with: "Best Rails Course Online"
     fill_in "course[price]", with: 55.99
-    attach_file("image", Rails.root + "app/assets/images/course_default.png")
+    page.attach_file("image", Rails.root + "app/assets/images/course_default.png")
     select "active", from: "Status"
 
     click_button "Create Course"
