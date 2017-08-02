@@ -81,6 +81,9 @@ class Seed
       user_id: rand(1..50),
       status: rand(0..3)
       )
+      3.times do |t|
+        order.course_orders.create(course_id: rand(1..50), quantity: rand(1...5))
+      end
       if order.status == 'default'
         puts "Order #{i}: default order created with #{order.user} created with id: #{order.id}"
       elsif order.status == 'paid'
