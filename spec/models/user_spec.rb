@@ -30,7 +30,10 @@ RSpec.describe User, type: :model do
     end
     it { is_expected.to validate_presence_of(:username) }
     it { is_expected.to validate_presence_of(:password) }
-    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_presence_of(:street_address) }
+    it { is_expected.to validate_presence_of(:city) }
+    it { is_expected.to validate_presence_of(:state) }
+    it { is_expected.to validate_presence_of(:zip_code) }
   end
 
   context 'associations' do
