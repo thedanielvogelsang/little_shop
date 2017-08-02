@@ -15,7 +15,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user == current_user
       render :show
     else
       redirect_back(fallback_location: root_path)
