@@ -8,7 +8,7 @@
   <th> Edit Course </th>
   <% @courses.each do |course| %>
     <tr>
-      <td><%= image_tag course.image %></td>
+      <td><%= image_tag course.image  %></td>
       <td><%= link_to course.title, course_path(course) %></td>
       <td><%= course.description %></td>
       <td><%= course.status %></td>

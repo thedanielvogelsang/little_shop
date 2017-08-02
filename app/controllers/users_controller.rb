@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id].to_i)
-    if @user == current_user
+    if current_user
       render :show
     else
       redirect_back(fallback_location: root_path)
