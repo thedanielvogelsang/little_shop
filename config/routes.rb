@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'courses#index'
-  resources :categories, only: [:show]
+  resources :categories, only: [:show, :index]
   resources :courses, only: [:index, :show]
 
   resources :users, only: [:new, :create, :edit, :update]
