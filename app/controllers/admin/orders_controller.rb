@@ -7,6 +7,11 @@ class Admin::OrdersController < Admin::AdminController
     end
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @user = @order.user
+  end
+
   def update
     order = Order.find(params[:id])
     if params[:status]

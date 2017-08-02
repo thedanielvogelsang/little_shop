@@ -14,21 +14,18 @@ RSpec.feature 'admin visits order page' do
 
     expect(page).to have_content(@order.user.first_name)
     expect(page).to have_content(@order.user.last_name)
-    expect(page).to have_content(@order.user.address)
+    # expect(page).to have_content(@order.user.address)
     expect(page).to have_content(@order.created_at)
-    byebug
+    expect(page).to have_content(@order.total_price)
+
     @order.courses.each do |course|
       expect(page).to have_link(course.title)
       expect(page).to have_content(course.price)
     end
+
+    @order.course_orders.each do |course_order|
+      expect(page).to have_content(course_order.quantity)
+      expect(page).to have_content(course_order.subtotal)
+    end
   end
 end
-
-#
-# And I can see, for each item on the order:
-#
-# Quantity in this order.
-#
-# Line item subtotal.
-# And I can see the total for the order.
-# And I can see the status for the order.
