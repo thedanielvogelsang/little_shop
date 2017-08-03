@@ -17,12 +17,16 @@ class Admin::CoursesController < ApplicationController
     else
       render :new
     end
+  end
 
     def show
       @course = Course.find(params[:id])
     end
 
-  end
+    def edit
+      @course = Course.find(params[:id])
+    end
+
 
   private
 
