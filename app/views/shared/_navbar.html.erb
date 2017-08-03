@@ -37,7 +37,7 @@
         <% end %>
         <% if current_user %>
           <li>
-            <%#= link_to 'Logout', logout_path, method: :delete %>
+            <%= link_to 'Logout', logout_path, method: :delete %>
           </li>
             <li><a href="/orders">My Orders</a></li>
         <% else %>

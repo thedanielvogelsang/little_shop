@@ -8,7 +8,11 @@
   <th> Edit Course </th>
   <% @courses.each do |course| %>
     <tr>
-      <td><%= image_tag course.image  %></td>
+      <td><% if course.image.present? %>
+            <%= image_tag course.image %>
+          <% else %>
+            <%= image_tag("course_default.png", size: "200x200") %>
+          <% end %></td>
       <td><strong><%= link_to course.title, course_path(course) %></strong></td>
       <td><%= course.description %></td>
       <td><%= course.status %></td>
