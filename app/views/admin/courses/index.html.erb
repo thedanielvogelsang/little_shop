@@ -1,0 +1,22 @@
+<h1>All Courses</h1>
+
+<table class="table">
+  <th> Image </th>
+  <th> Title </th>
+  <th> Description </th>
+  <th> Status </th>
+  <th> Edit Course </th>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><% if course.image.present? %>
+            <%= image_tag course.image %>
+          <% else %>
+            <%= image_tag("course_default.png", size: "200x200") %>
+          <% end %></td>
+      <td><strong><%= link_to course.title, course_path(course) %></strong></td>
+      <td><%= course.description %></td>
+      <td><%= course.status %></td>
+      <td><%= link_to "Edit", edit_admin_course_path(course) %></td>
+    </tr>
+    <% end %>
+</table>

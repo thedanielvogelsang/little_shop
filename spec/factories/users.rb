@@ -6,8 +6,11 @@ FactoryGirl.define do
     password "MyString"
     first_name "MyString"
     last_name "MyString"
-    email "MyString"
-    role 1
+    street_address "123 Blueberry Lane"
+    city "Seattle"
+    state "Washington"
+    zip_code "123456"
+    role 0
   end
 
   trait :with_orders do

@@ -1,7 +1,11 @@
 <body>
-<h1><%= current_user.username %>'s Dashboard</h1>
-<br>
-<h3><%= current_user.first_name %></h3>
-<h3><%= current_user.last_name %></h3>
-<h4><%= current_user.email %></h4>
+  <h1><%= current_user.username %>'s Dashboard</h1>
+  <br>
+  <h3><%= current_user.first_name %></h3>
+  <h3><%= current_user.last_name %></h3>
+  <h4><%= current_user.street_address %></h4>
+  <% if current_user.unit_number %>
+  <h4><%= current_user.unit_number %></h4>
+  <% end %>
+  <h4><%= current_user.city %>, <%= current_user.state %><%= current_user.zip_code %></h4>
 </body>

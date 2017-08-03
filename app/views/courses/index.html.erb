@@ -5,8 +5,8 @@
 
         <!-- Jumbotron Header -->
         <header class="jumbotron hero-spacer">
-            <h1>A Warm Welcome!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+            <h2>Available Courses</h2>
+            <p>review our selection of available online material</p>
         </header>
 
         <hr>
@@ -14,7 +14,7 @@
         <!-- Title -->
         <div class="row">
             <div class="col-lg-12 courses-header">
-                <h1>AVAILABLE COURSES</h1>
+
             </div>
             <hr class="header-rule">
         </div>
@@ -24,12 +24,12 @@
       <div class="row text-center">
 
         <% @courses.each do |course| %>
-        <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="col-md-6 portfolio-item">
           <div class="thumbnail">
             <img src="<%= course.image %>" class="course-image">
               <div class="caption">
               <h3><%= course.title %></h3>
-              <p><%= course.description %></p>
+              <p class="description"><%= course.description.first(150) %></p>
               <%= button_to "Add to Cart", carts_path(course_id: course.id), class: "btn btn-primary" %>
               </div>
           </div>
