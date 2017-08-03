@@ -12,10 +12,12 @@
     <h5><%= link_to "Login", new_session_path %> or <%= link_to "Create Account", new_user_path %> to Checkout <h5>
   <% end %>
   </div>
+
+
 <div class="">
     <div class="row text-center">
       <% @courses.each do |course| %>
-        <div class="col-md-3 col-sm-6 center-items">
+        <div class="col-md-4 col-sm-3 center-items">
           <div class="thumbnail">
             <img src="<%= course.image %>" class="course-image">
               <div class="caption">

@@ -50,9 +50,9 @@ class Seed
   def generate_active_courses
     50.times do |i|
       course = Course.create!(
-        title: Faker::Company.profession,
-        description: Faker::Lorem.paragraph,
-        image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
+        title: Faker::Educator.course,
+        description: Faker::Educator.university,
+        image: "https://unsplash.it/400/300?image=0",
         price: Faker::Number.decimal(2),
         category_id: rand(1..8)
       )
@@ -63,9 +63,9 @@ class Seed
   def generate_inactive_courses
     5.times do |i|
       course = Course.create!(
-        title: Faker::Company.profession,
-        description: Faker::Lorem.paragraph,
-        image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
+        title: Faker::Educator.course,
+        description: Faker::Educator.university,
+        image: "https://unsplash.it/400/300?image=0",
         price: Faker::Number.decimal(2),
         category_id: rand(1..10),
         status: 1
