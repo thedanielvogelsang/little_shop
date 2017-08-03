@@ -14,6 +14,7 @@ class Seed
     generate_categories
     generate_active_courses
     generate_inactive_courses
+    generate_orders
   end
 
   def generate_users
@@ -43,7 +44,7 @@ class Seed
       category = Category.create!(
         title: Faker::Commerce.unique.department
       )
-      puts "Category #{i}: #{category.title}!"
+      puts "Category #{i}: #{category.title}, #{category.id}!"
     end
   end
 
@@ -54,7 +55,7 @@ class Seed
         description: Faker::Lorem.paragraph,
         image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         price: Faker::Number.decimal(2),
-        category_id: rand(1..8)
+        category_id: rand(1...10)
       )
       puts "Course #{i}: #{course.title} created with id:#{course.id}!"
     end
@@ -92,7 +93,6 @@ class Seed
       else order.status == 'completed'
         puts "Order #{i}: completed order created with #{order.user} created with id: #{order.id}"
       end
-      puts "Inactive course #{i}: #{course.title} created with id: #{course.id}!"
     end
   end
 end

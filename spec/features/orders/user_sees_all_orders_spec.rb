@@ -6,10 +6,10 @@ RSpec.feature "Authenticated user visits /orders" do
 
       @user_1 = User.create(username: "Sue", password: "0000")
       @user_2 = User.new(username: "Peter", password: "1111")
-      order_1 = Order.create(status: "completed")
-      order_2 = Order.create(status: "cancelled")
+      @order_1 = Order.create(status: "completed")
+      @order_2 = Order.create(status: "cancelled")
       order_3 = Order.create(status: "paid")
-      @user_1.orders = order_1, order_2
+      @user_1.orders = @order_1, @order_2
       @user_2.orders << order_3
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
@@ -34,7 +34,7 @@ RSpec.feature "Authenticated user visits /orders" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
 
-      visit orders_path
+      visit "/orders"
 
       expect(page).to have_content("You have no orders")
     end
