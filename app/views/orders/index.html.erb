@@ -1,14 +1,14 @@
 <h3> My Orders</h3>
- <% if @orders == [] %>
+<% if @orders == [] %>
   <h3> <%= "You have no orders" %> </h3>
- <% else %>
+<% else %>
   <table class="table">
     <th> ID </th>
     <th> status </th>
     <th> user ID</th>
     <% @orders.each do |order| %>
       <tr>
-        <td> <%= link_to order.id, order_path(@user, order.id) %></td>
+        <td> <%= link_to order.id, order_path(:id => order.id) %> </td>
         <td> <%= order.status %></td>
         <td> <%= order.user_id %></td>
       </tr>
