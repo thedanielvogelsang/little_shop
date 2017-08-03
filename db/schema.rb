@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802023859) do
+ActiveRecord::Schema.define(version: 20170731013150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170802023859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.index "to_tsvector('english'::regconfig, (title)::text)", name: "index_categories_on_title", using: :gin
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
@@ -42,7 +43,6 @@ ActiveRecord::Schema.define(version: 20170802023859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
-    t.datetime "retired"
     t.integer "status", default: 0
     t.index ["category_id"], name: "index_courses_on_category_id"
   end
@@ -67,15 +67,6 @@ ActiveRecord::Schema.define(version: 20170802023859) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "user_courses", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_user_courses_on_course_id"
-    t.index ["user_id"], name: "index_user_courses_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -95,6 +86,4 @@ ActiveRecord::Schema.define(version: 20170802023859) do
   add_foreign_key "course_orders", "orders"
   add_foreign_key "courses", "categories"
   add_foreign_key "orders", "users"
-  add_foreign_key "user_courses", "courses"
-  add_foreign_key "user_courses", "users"
 end
