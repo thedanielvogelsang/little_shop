@@ -43,8 +43,8 @@ class Seed
   def generate_active_courses
     50.times do |i|
       course = Course.create!(
-        title: Faker::Company.profession,
-        description: Faker::Lorem.paragraph,
+        title: Faker::Educator.course,
+        description: Faker::Educator.university,
         image: "https://unsplash.it/400/300?image=0",
         price: Faker::Number.decimal(2),
         category_id: rand(1..10)
@@ -56,8 +56,8 @@ class Seed
   def generate_retired_courses
     5.times do |i|
       course = Course.create!(
-        title: Faker::Company.profession,
-        description: Faker::Lorem.paragraph,
+        title: Faker::Educator.course,
+        description: Faker::Educator.university,
         image: "https://unsplash.it/400/300?image=0",
         price: Faker::Number.decimal(2),
         category_id: rand(1..10),
