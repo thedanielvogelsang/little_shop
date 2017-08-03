@@ -1,8 +1,8 @@
 <h1><%= current_user.username.capitalize %>'s Admin Dashboard</h1>
 <%= link_to "Edit User Info", edit_user_path(current_user) %>
 <hr>
-<p><%= link_to "Add new item", new_admin_course_path %></p>
-<p><%= link_to "View All Items", admin_courses_path%></p>
+<p><%= link_to "Add new course", new_admin_course_path %></p>
+<p><%= link_to "View All Courses", admin_courses_path%></p>
 <hr>
 Ordered: <%= @orders.ordered.count %><br>
 Paid: <%= @orders.paid.count %><br>

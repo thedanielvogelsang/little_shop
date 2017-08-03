@@ -6,6 +6,6 @@ class Category < ApplicationRecord
   validates_presence_of :title
 
   def self.search(search)
-    where("lower(title) = ?", search.downcase)
+    where("title LIKE ?", "%#{search}%")
   end
 end
