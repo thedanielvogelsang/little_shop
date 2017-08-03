@@ -27,6 +27,10 @@ class Admin::CoursesController < ApplicationController
       @course = Course.find(params[:id])
     end
 
+    def update
+      @course = Course.update(course_params)
+      redirect_to course_path(@course)
+    end
 
   private
 
