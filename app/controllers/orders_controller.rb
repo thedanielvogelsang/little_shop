@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find(session[:order_id])
     @courses = @order.courses
   end
 
