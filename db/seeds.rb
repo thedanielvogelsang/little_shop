@@ -41,16 +41,16 @@ class Seed
   def generate_categories
     10.times do |i|
       category = Category.create!(
-        title: Faker::Commerce.department
+        title: Faker::Commerce.unique.department
       )
       puts "Category #{i}: #{category.title}!"
     end
   end
 
   def generate_active_courses
-    50.times do |i|
+    25.times do |i|
       course = Course.create!(
-        title: Faker::Company.profession,
+        title: Faker::Company.unique.profession,
         description: Faker::Lorem.paragraph,
         image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         price: Faker::Number.decimal(2),
@@ -63,7 +63,7 @@ class Seed
   def generate_inactive_courses
     5.times do |i|
       course = Course.create!(
-        title: Faker::Company.profession,
+        title: Faker::Educator.unique.course,
         description: Faker::Lorem.paragraph,
         image: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
         price: Faker::Number.decimal(2),

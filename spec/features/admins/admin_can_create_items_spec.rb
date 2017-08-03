@@ -9,7 +9,7 @@ describe "Admin can create new items" do
 
     visit admin_dashboard_path
 
-    click_link "Add new item"
+    click_link "Add new course"
 
     expect(current_path).to eq(new_admin_course_path)
 

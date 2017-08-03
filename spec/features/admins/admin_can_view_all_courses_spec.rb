@@ -12,14 +12,14 @@ describe "Admin visits admin/courses" do
 
     visit admin_dashboard_path(admin)
 
-    click_on "View All Items"
+    click_on "View All Courses"
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content(course_1.title)
     expect(page).to have_content(course_2.description)
     expect(page).to have_css("img[src*='#{course_3.image}']")
     expect(course_3.status).to eq("active")
-    expect(course_4.status).to eq("inactive")
+    expect(course_4.status).to eq("retired")
     expect(page).to have_link(course_1.title, href: course_path(course_1))
 
     expect(page).to have_content("Edit")
