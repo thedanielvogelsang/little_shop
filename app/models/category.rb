@@ -5,10 +5,7 @@ class Category < ApplicationRecord
   has_many :courses
   validates_presence_of :title
 
-  def search(search)
-    search.each do |term|
-      where("title LIKE ?", "%#{term}%")
-      Course.where(title: "#{term}")
-    end
+  def self.search(search)
+    where("lower(title) = ?", search.downcase)
   end
 end

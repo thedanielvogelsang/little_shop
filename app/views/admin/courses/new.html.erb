@@ -2,6 +2,8 @@
 
 <%= form_for [:admin, @course], html: { multipart: true } do |f| %>
 
+<%= render partial: "shared/errors", locals: { target: @course } %>
+
   <%= f.label :category_id %>
   <%= f.collection_select :category_id, Category.all, :id, :title, required: true %></br>
 
