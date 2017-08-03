@@ -14,6 +14,7 @@ class Seed
     generate_categories
     generate_active_courses
     generate_inactive_courses
+    generate_orders
   end
 
   def generate_users
@@ -41,20 +42,20 @@ class Seed
   def generate_categories
     10.times do |i|
       category = Category.create!(
-        title: Faker::Commerce.department
+        title: Faker::Commerce.unique.department
       )
-      puts "Category #{i}: #{category.title}!"
+      puts "Category #{i}: #{category.title}, #{category.id}!"
     end
   end
 
   def generate_active_courses
-    50.times do |i|
+    25.times do |i|
       course = Course.create!(
-        title: Faker::Educator.course,
+        title: Faker::Educator.unique.course,
         description: Faker::Educator.university,
         image: "https://unsplash.it/400/300?image=0",
         price: Faker::Number.decimal(2),
-        category_id: rand(1..8)
+        category_id: rand(1...10)
       )
       puts "Course #{i}: #{course.title} created with id:#{course.id}!"
     end
@@ -70,7 +71,28 @@ class Seed
         category_id: rand(1..10),
         status: 1
       )
-      puts "Inactive course #{i}: #{course.title} created with id: #{course.id}!"
+      puts "Retired course #{i}: #{course.title} created with id: #{course.id}!"
+    end
+  end
+
+  def generate_orders
+    25.times do |i|
+      order = Order.create!(
+      user_id: rand(1..50),
+      status: rand(0..3)
+      )
+      3.times do
+        order.course_orders.create(course_id: rand(1..50), quantity: rand(1...5))
+      end
+      if order.status == 'default'
+        puts "Order #{i}: default order created with #{order.user} created with id: #{order.id}"
+      elsif order.status == 'paid'
+        puts "Order #{i}: paid order created with #{order.user} created with id: #{order.id}"
+      elsif order.status == 'cancelled'
+        puts "Order #{i}: cancelled order created with #{order.user} created with id: #{order.id}"
+      else order.status == 'completed'
+        puts "Order #{i}: completed order created with #{order.user} created with id: #{order.id}"
+      end
     end
   end
 end

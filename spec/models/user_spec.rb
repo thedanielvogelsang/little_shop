@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:state) }
     it { is_expected.to validate_presence_of(:zip_code) }
   end
-
+  
   context 'enum role' do
     it 'can be created as an admin' do
       admin = create(:user, role: 1)

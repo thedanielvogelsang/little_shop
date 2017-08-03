@@ -42,6 +42,11 @@
             <%= link_to 'Logout', logout_path, method: :delete %>
           </li>
             <li><a href="/orders">My Orders</a></li>
+            <% if current_user.admin? %>
+              <li><a href="/admin/dashboard">My Dashboard</a></li>
+              <li><a href="/admin/courses">All Courses</a></li>
+              <li><a href="/admin/courses/new">Create a New Course</a></li>
+            <% end %>
         <% else %>
           <li><a href="/login">Login</a></li>
         <% end %>

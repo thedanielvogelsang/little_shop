@@ -12,7 +12,7 @@ describe "Admin visits admin/courses" do
 
     visit admin_dashboard_path(admin)
 
-    click_on "View All Items"
+    click_on "View All Courses"
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content(course_1.title)

@@ -5,6 +5,7 @@ class Category < ApplicationRecord
   has_many :courses
   validates_presence_of :title
 
+
   def self.search(search_term)
     if search_term
       where('title LIKE ?', "%#{search_term}%")
