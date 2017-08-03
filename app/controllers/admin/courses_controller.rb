@@ -17,16 +17,24 @@ class Admin::CoursesController < ApplicationController
     else
       render :new
     end
+  end
 
-    def show
-      @course = Course.find(params[:id])
-    end
+  def show
+  end
 
+  def edit
+    @course = Course.find(params[:id])
+  end
+
+  def update
+    @course = Course.update(course_params)
+    redirect_to course_path(@course)
   end
 
   private
 
-    def course_params
-      params.require(:course).permit(:title, :description, :price, :image, :status, :category_id)
-    end
+  def course_params
+    params.require(:course).permit(:title, :description, :price, :image, :status, :category_id)
+  end
+
 end
