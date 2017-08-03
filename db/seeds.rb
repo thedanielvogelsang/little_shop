@@ -70,6 +70,28 @@ class Seed
         category_id: rand(1..10),
         status: 1
       )
+      puts "Retired course #{i}: #{course.title} created with id: #{course.id}!"
+    end
+  end
+
+  def generate_orders
+    25.times do |i|
+      order = Order.create!(
+      user_id: rand(1..50),
+      status: rand(0..3)
+      )
+      3.times do
+        order.course_orders.create(course_id: rand(1..50), quantity: rand(1...5))
+      end
+      if order.status == 'default'
+        puts "Order #{i}: default order created with #{order.user} created with id: #{order.id}"
+      elsif order.status == 'paid'
+        puts "Order #{i}: paid order created with #{order.user} created with id: #{order.id}"
+      elsif order.status == 'cancelled'
+        puts "Order #{i}: cancelled order created with #{order.user} created with id: #{order.id}"
+      else order.status == 'completed'
+        puts "Order #{i}: completed order created with #{order.user} created with id: #{order.id}"
+      end
       puts "Inactive course #{i}: #{course.title} created with id: #{course.id}!"
     end
   end
