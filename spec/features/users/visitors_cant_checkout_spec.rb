@@ -34,7 +34,6 @@ RSpec.feature "visitor adds items to cart and attempts to checkout" do
       within(".checkout-or-login-links") do
         click_on("Create Account")
       end
-
       fill_in "user[first_name]", with: "Dan"
       fill_in "user[last_name]", with: "Vog"
       fill_in "user[username]", with: "DVOG"
@@ -43,8 +42,8 @@ RSpec.feature "visitor adds items to cart and attempts to checkout" do
       fill_in 'user[unit_number]', with: "123"
       fill_in 'user[city]', with: "Seattle"
       fill_in 'user[state]', with: "Washington"
-      fill_in 'user[zip_code]', with: "123456"      
-      within("//form") do
+      fill_in 'user[zip_code]', with: "123456"
+      within("//form.new_user") do
         click_on "Create Account"
       end
       visit("/cart")
