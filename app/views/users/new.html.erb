@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <h3>Create New Account:</h3>
-      <%= form_for @user do |f| %>
+      <%= form_for @user, {class: "new-account"} do |f| %>
       <%= f.label :first_name %>
       <%= f.text_field :first_name%><br>
       <%= f.label :last_name %>
