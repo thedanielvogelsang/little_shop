@@ -8,7 +8,7 @@
     <th> user ID</th>
     <% @orders.each do |order| %>
       <tr>
-        <td> <%= link_to order.id, order_path(order) %></td>
+        <td> <%= link_to order.id, order_path(@user, order.id) %></td>
         <td> <%= order.status %></td>
         <td> <%= order.user_id %></td>
       </tr>

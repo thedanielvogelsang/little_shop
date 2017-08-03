@@ -1,6 +1,4 @@
-# As a visitor when I have items in my cart And when I visit "/cart" I should not see an option to "Checkout" I should see an option to "Login or Create Account to Checkout" After I create an account And I visit "/cart Then I should see all of the data that was there when I was not logged in"
 require 'rails_helper'
-
 
 RSpec.feature "visitor adds items to cart and attempts to checkout" do
   before(:each) do
@@ -43,9 +41,12 @@ RSpec.feature "visitor adds items to cart and attempts to checkout" do
       fill_in 'user[city]', with: "Seattle"
       fill_in 'user[state]', with: "Washington"
       fill_in 'user[zip_code]', with: "123456"
+
+      click_button "Create Account"
       within("//form.new_user") do
         click_on "Create Account"
       end
+
       visit("/cart")
       expect(page).to have_content(@item.title)
       expect(page).to have_content("Quantity: 2")

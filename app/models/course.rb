@@ -9,5 +9,4 @@ class Course < ApplicationRecord
   has_many :orders, through: :course_orders
 
   enum status: %w[active inactive]
-
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Course, type: :model do
   describe 'validations' do
-    it 'can only be created with all required attributes' do
+    it 'is created with valid attributes' do
       category = create(:category)
       valid_course = create(:course, category: category)
       invalid_course = build(:course, title: nil)
