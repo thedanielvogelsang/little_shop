@@ -37,8 +37,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_many(:user_courses) }
-    it { should have_many(:courses).through(:user_courses) }
+    it { is_expected.to have_many(:courses) }
   end
 
   context 'enum role' do
