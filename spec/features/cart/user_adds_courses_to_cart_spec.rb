@@ -11,7 +11,6 @@ RSpec.feature 'user visits index page' do
       visit root_path
       expect(page).to have_content('MyCourse')
       expect(page).to have_content('Course Details')
-
       click_button 'Add to Cart'
       expect(page).to have_content("#{@course.title} added to cart")
 
