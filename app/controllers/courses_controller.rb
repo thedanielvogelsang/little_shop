@@ -1,6 +1,10 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.active
+    if params[:search]
+      @courses = Course.search
+    else
+      @courses = Course.active
+    end
   end
 
   def show

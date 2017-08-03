@@ -67,7 +67,8 @@
   background-attachment: scroll;
 }
 .cart-page {
-  background-image: image-url("tetrahedronfield.jpg");
+  background-color: grey;
+  // background-image: image-url("tetrahedronfield.jpg");
   // background-repeat: no-repeat;
   background-attachment: scroll;
 }
@@ -79,7 +80,11 @@ header.jumbotron{
 
 nav.navbar-invers{
   background: rgb(135, 169, 219);
-  color: white;
+  color: black;
+}
+
+nav.navbar-invers_a{
+  color: black;
 }
 
 .thumbnail{

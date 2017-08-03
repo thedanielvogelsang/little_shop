@@ -13,4 +13,14 @@ class Course < ApplicationRecord
   def self.search(search)
     where("lower(title) LIKE lower(?)", "%#{search.strip}%")
   end
+
+  def self.search(search_term)
+    if search_term
+      where('name LIKE ?', "%#{search_term}%")
+      # where('name LIKE ?', "%#{search_term}%").limit(10)
+      # where('name LIKE ?', "%#{search_term}%").order('id DESC')
+    else
+      order('id DESC')
+    end
+  end
 end
